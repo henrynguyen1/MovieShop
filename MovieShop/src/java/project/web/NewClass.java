@@ -10,5 +10,5 @@ package project.web;
  * @author HenryNguyen
  */
 public class NewClass {
-    
+    int num = 0;
 }
