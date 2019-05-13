@@ -64,10 +64,11 @@
         <div class="container mt-lg-4 mt-sm-2 pb-4" style="width:100%; height:650px; background-color: lightgray;">
                <div class="row" style="background-color: lightgray;">
                    <div class="col mt-5" style="text-align: left;">
-                         <h2> Welcome, <%=name%>!</h2>
+                         <h2> 
+                         <%= "Welcome, "+request.getParameter("name")+" !" %>
+                         </h2>
                    </div>
                </div>
-            
             
             <div class="fixed-bottom" style="background-color: orange; ">
             <div class ="row">
