@@ -60,10 +60,10 @@
                </div>
             <br>
                 <table>
-                <tr><td>Name:</td><td><input size="23" type="text" name="name"></td></tr>
-                <tr><td>Email:</td><td><input size="23" type="text" name="email"></td></tr>
-                <tr><td>Password:</td><td><input size="23" type="password" name="password"></td></tr>
-                <tr><td>Phone Number:</td><td><input type="text" name="phone"></td></tr> 
+                <tr><td>Name:</td><td><input size="25" type="text" name="name"></td></tr>
+                <tr><td>Email:</td><td><input size="25" type="text" name="email"></td></tr>
+                <tr><td>Password:</td><td><input size="25" type="password" name="password"></td></tr>
+                <tr><td>Phone Number:</td><td><input size="25" type="text" name="phone"></td></tr> 
                 <tr><td></td>
                     <td>
                         <input class="button" type="submit" value="Register" onclick="location.href = 'welcome.jsp'"> 
