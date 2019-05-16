@@ -1,6 +1,6 @@
 package uts.web.model;
 import java.io.Serializable;
-import java.util.ArrayList;
+
 
 
 
@@ -9,10 +9,18 @@ import java.util.ArrayList;
  * @author henry117
  */
 
-public class Shipment  implements Serializable{
+public class Shipment implements Serializable{
     private String shipID; 
     private String email;   
     private String name;
+    
+    
+    public Shipment(String shipID, String email, String name){
+    this.email = email;
+    this.name = name;
+    this.shipID = shipID;
+            
+    }
 
     public String getShipID() {
         return shipID;
