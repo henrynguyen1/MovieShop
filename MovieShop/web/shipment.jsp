@@ -1,4 +1,4 @@
-<%@page import="uts.web.dao.*"%>
+<%@page import="uts.web.model.*"%>
 <%@page import="uts.web.controller.*"%>
 <%@page import="java.sql.*"%>
 <%@page contentType="text/html" import="java.util.*" import="uts.isd.model.*" pageEncoding="UTF-8"%>
