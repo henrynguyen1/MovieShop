@@ -1,4 +1,4 @@
-package uts.web.dao;
+package uts.web.controller;
 
 import java.sql.Connection;
 

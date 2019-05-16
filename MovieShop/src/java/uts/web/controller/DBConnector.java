@@ -1,6 +1,6 @@
-package uts.web.dao;
+package uts.web.controller;
 
-import uts.web.dao.DB;
+import uts.web.controller.DB;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

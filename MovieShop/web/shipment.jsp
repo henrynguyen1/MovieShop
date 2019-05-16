@@ -1,5 +1,5 @@
-<%@page import="uts.isd.model.dao.*"%>
-<%@page import="uts.isd.controller.*"%>
+<%@page import="uts.web.dao.*"%>
+<%@page import="uts.web.controller.*"%>
 <%@page import="java.sql.*"%>
 <%@page contentType="text/html" import="java.util.*" import="uts.isd.model.*" pageEncoding="UTF-8"%>
 
