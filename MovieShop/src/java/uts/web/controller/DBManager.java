@@ -3,12 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project.web;
+package uts.web.controller;
+
+import java.sql.*;
 
 /**
  *
  * @author HenryNguyen
  */
-public class NewClass {
-    int num = 0;
+public class DBManager {
+    private Statement st;
+
+ 
+
+public DBManager(Connection conn) throws SQLException {
+
+st = conn.createStatement();
+
+}
+    
 }
