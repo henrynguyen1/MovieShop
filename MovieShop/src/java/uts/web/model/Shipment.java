@@ -15,6 +15,8 @@ public class Shipment implements Serializable{
     private String name;
     
     
+    public Shipment() {}
+    
     public Shipment(String shipID, String email, String name){
     this.email = email;
     this.name = name;

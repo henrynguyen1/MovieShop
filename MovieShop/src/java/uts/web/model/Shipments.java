@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @author HenryNguyen
  */
 public class Shipments {
-     private ArrayList<Shipment> list = new ArrayList<Shipment>();
+    private ArrayList<Shipment> list = new ArrayList<Shipment>();
     
     
     public ArrayList<Shipment> getList(){
