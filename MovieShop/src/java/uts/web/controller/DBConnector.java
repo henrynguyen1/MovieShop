@@ -11,16 +11,16 @@ import java.sql.SQLException;
  * @author George
  */
 public class DBConnector{
-    private String URL = "jdbc:derby://localhost:1527/studentsdb";
-    private String dbuser = "isduser"; 
-    private String dbpass = "admin";
-    private String driver = "org.apache.derby.jdbc.ClientDriver";
+    private final String URL = "jdbc:derby://localhost:1527/studentsdb";
+    private final String DBUSER = "isduser"; 
+    private final String DBPASS = "admin";
+    private final String DRIVER = "org.apache.derby.jdbc.ClientDriver";
     private Connection conn;
     
 
     public DBConnector() throws ClassNotFoundException, SQLException {
-        Class.forName(driver);
-        conn = DriverManager.getConnection(URL, dbuser, dbpass);
+        Class.forName(DRIVER);
+        conn = DriverManager.getConnection(URL, DBUSER, DBPASS);
     }
 
     public Connection openConnection(){
