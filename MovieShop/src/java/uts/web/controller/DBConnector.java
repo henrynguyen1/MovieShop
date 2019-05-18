@@ -15,19 +15,19 @@ public class DBConnector{
     private final String DBUSER = "isduser"; 
     private final String DBPASS = "admin";
     private final String DRIVER = "org.apache.derby.jdbc.ClientDriver";
-    private Connection conn;
+    private final Connection CONN;
     
 
     public DBConnector() throws ClassNotFoundException, SQLException {
         Class.forName(DRIVER);
-        conn = DriverManager.getConnection(URL, DBUSER, DBPASS);
+        CONN = DriverManager.getConnection(URL, DBUSER, DBPASS);
     }
 
     public Connection openConnection(){
-        return this.conn;
+        return this.CONN;
     }
     
     public void closeConnection() throws SQLException {
-        this.conn.close();
+        this.CONN.close();
     }
 }
