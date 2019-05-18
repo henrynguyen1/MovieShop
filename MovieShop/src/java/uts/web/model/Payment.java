@@ -9,13 +9,24 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 /*
- * Enum constants representing the payment types to restrict the input.
+ * Enum constants representing the payment method to pay for an order.
  */
 enum PaymentType {
     WALLET,
     CREDIT_CARD,
     BANK_TRANSFER,
     PAYPAL;    
+}
+
+/*
+ * Enum constants representing the status of the payment.
+ */
+enum PaymentStatus {
+    STARTED,
+    SAVED,
+    PROCESSING,
+    ACCEPTED,
+    DECLINED;
 }
 
 /**
@@ -30,6 +41,7 @@ public class Payment implements Serializable {
     private double amount;
     private PaymentType type;
     private LocalDate date;
+    private PaymentStatus status;
 
     public Payment() {
         paymentID = 0;
@@ -38,16 +50,18 @@ public class Payment implements Serializable {
         amount = 0.0;
         type = PaymentType.WALLET;
         date = LocalDate.now();
+        status = PaymentStatus.STARTED;
     }
 
     public Payment(int paymentID, int orderID, int userID, double amount,
-            PaymentType type, LocalDate date) {
+            PaymentType type, LocalDate date, PaymentStatus status) {
         this.paymentID = paymentID;
         this.orderID = orderID;
         this.userID = userID;
         this.amount = amount;
         this.type = type;
         this.date = date;
+        this.status = status;
     }
 
     public double getAmount() {
@@ -72,6 +86,10 @@ public class Payment implements Serializable {
 
     public int getUserID() {
         return userID;
+    }
+    
+    public PaymentStatus getStatus() {
+        return status;
     }
 
     public void setAmount(double amount) {
@@ -114,4 +132,7 @@ public class Payment implements Serializable {
         // TODO: else throw exception
     }
     
+    public void setStatus(PaymentStatus status) {
+        this.status = status;
+    }
 }
