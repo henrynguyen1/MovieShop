@@ -7,20 +7,26 @@ import java.sql.SQLException;
 
 /**
  * Initiate connection with the jdbc derby database and initialize
- * the super class conn field 
- * @author George and Ben
+ * the super class conn field.
+ * Based on the "Preparing DAO Class" section of the following website:
+ * https://www.codejava.net/coding/jsp-servlet-jdbc-mysql-create-read-update-delete-crud-example
+ * @author George and Ben Stevens (02078018)
  */
 public class DBConnector{
-    private final String URL = "jdbc:derby://localhost:1527/studentsdb";
-    private final String DBUSER = "isduser"; 
-    private final String DBPASS = "admin";
-    private final String DRIVER = "org.apache.derby.jdbc.ClientDriver";
+    private final String URL;
+    private final String DBUSER;
+    private final String DBPASS;
+    private final String DRIVER;
     private Connection conn;
     
     /**
      * Default constructor for creating connections to MovieStoreDB.
      */
     public DBConnector() {
+        URL = "jdbc:derby://localhost:1527/MovieStoreDB";
+        DBUSER = "moviestore"; 
+        DBPASS = "moviestorepassword";
+        DRIVER = "org.apache.derby.jdbc.ClientDriver";
     }
 
     /**
