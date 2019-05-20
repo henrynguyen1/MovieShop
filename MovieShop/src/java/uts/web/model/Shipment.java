@@ -13,8 +13,14 @@ public class Shipment implements Serializable{
     private String shipID; 
     private String email;   
     private String name;
-    
-    
+    private int orderID;
+    private int movieID; 
+    private String trackingNo;
+    private String status;
+    private String date;
+    private double price;
+    private int userID;
+
     public Shipment() {}
     
     public Shipment(String shipID, String email, String name){
@@ -46,6 +52,33 @@ public class Shipment implements Serializable{
 
     public void setName(String name) {
         this.name = name;
+    }
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public int getMovieID() {
+        return movieID;
+    }
+
+    public String getTrackingNo() {
+        return trackingNo;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getUserID() {
+        return userID;
     }
       
 }
