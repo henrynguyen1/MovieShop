@@ -12,14 +12,25 @@ import java.sql.*;
  * @author HenryNguyen
  */
 public class DBManager {
-    private Statement st;
+    private final Statement STATEMENT;
+    private final DBConnector DBCONN;
+    private final Connection CONN;
+    private ResultSet resSet;
+    private String query;
+    
+    /*
+     * Constructor using default connection from DBConnector class.
+     */
+    public DBManager() throws ClassNotFoundException, SQLException {
+        DBCONN = new DBConnector();
+        CONN = DBCONN.openConnection();
+        STATEMENT = CONN.createStatement();
+    }
 
- 
-
-public DBManager(Connection conn) throws SQLException {
-
-st = conn.createStatement();
-
-}
+    public DBManager(Connection conn) throws ClassNotFoundException, SQLException {
+        CONN = conn;
+        STATEMENT = CONN.createStatement();
+        DBCONN = new DBConnector();
+    }
     
 }
