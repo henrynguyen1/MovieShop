@@ -16,6 +16,27 @@ import java.util.List;
 
 import uts.web.model.Payment;
 
+/*
+ * Enum constants representing the payment method to pay for an order.
+ */
+enum PaymentType {
+    WALLET,
+    CREDIT_CARD,
+    BANK_TRANSFER,
+    PAYPAL;    
+}
+
+/*
+ * Enum constants representing the status of the payment.
+ */
+enum PaymentStatus {
+    STARTED,
+    SAVED,
+    PROCESSING,
+    ACCEPTED,
+    DECLINED;
+}
+
 /**
  * Data Access Object (DAO) for payment-related queries.
  * Based on the "Preparing DAO Class" section of the following website:
@@ -24,14 +45,13 @@ import uts.web.model.Payment;
  */
 public class PaymentDAO {
     private final DBConnector DBCONN;
-    private Connection conn;
     private final String INSERT_QUERY;
     private final String UPDATE_QUERY;
     private final String DELETE_QUERY;
     private final String PAYMENT_SELECT;
     private final String USER_SELECT;
     private final String DATE_SELECT;
-    private String sql;
+    private final String USER_DATE_SELECT;
 
     /**
      * Default constructor which creates a DBConnector object send queries to
@@ -45,7 +65,8 @@ public class PaymentDAO {
         DELETE_QUERY = "DELETE FROM payments WHERE PaymentID = ?";
         PAYMENT_SELECT = "SELECT * FROM payments WHERE PaymentID = ?";
         USER_SELECT = "SELECT * FROM payments WHERE UserID = ?";
-        DATE_SELECT = "SELECT * FROM payments WHERE PaymentID = ?";
+        DATE_SELECT = "SELECT * FROM payments WHERE Date = ?";
+        USER_DATE_SELECT = "SELECT * FROM payments WHERE UserID = ? AND Date = ?";
         
         DBCONN = new DBConnector();
     }
@@ -127,7 +148,7 @@ public class PaymentDAO {
     
     /**
      * Find all payments made on the specified date.
-     * @param date - user ID number to search for.
+     * @param date - payment date to search for.
      * @return - list of payments made on the date.
      * @throws SQLException - connection to MovieStoreDB could not be created.
      */
@@ -138,5 +159,48 @@ public class PaymentDAO {
         
         return userPayments;
     }
+    
+    /**
+     * Find all payments made on a specific date by a specific user.
+     * @param userID - user ID to search for.
+     * @param date - payment date to search for.
+     * @return - list of payments made by a particular user on a specific date.
+     * @throws SQLException - connection to MovieStoreDB could not be created.
+     */
+    public List<Payment> getPayments(int userID, LocalDate date) throws SQLException {
+        ArrayList<Payment> userPayments = new ArrayList<>();
+        Payment nextPay = new Payment();
+        
+        // Connect to DB and set query up.
+        Connection conn = DBCONN.openConnection();
+        PreparedStatement ps = conn.prepareStatement(USER_DATE_SELECT);
+        ps.setInt(1, userID);
+        ps.setObject(2, date);
+        
+        ResultSet rs = ps.executeQuery();
+        
+        // Construct the list using the recrods from the query results.
+        while(rs.next()) {
+            nextPay.setPaymentID(rs.getInt("PaymentID"));
+            nextPay.setUserID(rs.getInt("UserID"));
+            nextPay.setOrderID(rs.getInt("OrderID"));
+            nextPay.setAmount(rs.getDouble("Amount"));
+            nextPay.setDate(rs.getObject("Date", LocalDate.class));
+            nextPay.setStatus(rs.getObject("Status", PaymentStatus.class));
+            nextPay.setMethod(rs.getObject("Type", PaymentType.class));
+
+            userPayments.add(nextPay);
+        }
+        
+        // Close ResultSet and PreparedStatement objects then close the
+        // connection to the DB.
+        rs.close();
+        ps.close();
+        conn.close();
+        
+        // List of payments.
+        return userPayments;
+    }
+
 
 }
