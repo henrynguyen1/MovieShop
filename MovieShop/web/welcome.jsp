@@ -3,7 +3,7 @@
     Created on : 13/05/2019, 11:53:40 AM
     Author     : francobuena
 --%>
-
+<%@page import="uts.web.model.User"%>
 <%@page import="java.util.Random"%>
 <html>
     <head>
@@ -65,36 +65,19 @@
                <div class="row" style="background-color: bisque;">
                    <div class="col mt-5" style="text-align: left;">
                          <h2> Welcome, <%=name%>!</h2>
-                         <table border="10" width="5" cellspacing="10">
-                             <thead>
-                                 <tr>
-                                     <th> Data </th>
-                                     <th> User Info </th>
-                                 </tr>
-                             </thead>
-                             <tbody>
-                                 <tr>
-                                     <td> Name </td>
-                                     <td> <%=name%> </td>
-                                 </tr>
-                                 <tr>
-                                     <td> Email </td>
-                                     <td> <%=email%> </td>
-                                 </tr>
-                                 <tr>
-                                     <td> Phone Number</td>
-                                     <td> <%=phone%> </td>
-                                 </tr>
-                                 <tr>
-                                     <td> ID </td>
-                                     <td> <%=ID%> </td>
-                                 </tr>
-                             </tbody>
-                         </table>
-
+                         <p>ID: <%= ID%> </p>
+                         <p>Name: <%= name%></p> 
+                         <p>Email: <%= email%></p>
+                         <p>Phone: <%= phone%></p> 
+                         <p>Password: <%= password%></p>
                    </div>
                </div>
-           
+                                 
+          <%
+          User user = new User(email,name,password,phone);
+          session.setAttribute("user", user);
+          %>                     
+        
             <button class="button" type="submit" onclick="location.href = 'edit_details.jsp'"> Edit Details </button>
             &nbsp; 
             <button class="button" type="button" onclick="location.href = 'remove.jsp'" > Remove Account </button>
