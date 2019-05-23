@@ -106,7 +106,12 @@ public boolean updateShipment(Shipment shipment) throws SQLException {
         return update; 
 
 }
+public boolean deleteShipment(Shipment shipment) throws SQLException {
+    Connection connect = DBCONN.openConnection();    
+    PreparedStatement pstmt = conn.prepareStatement(DELETE_QUERY);
+    
 
+}
 
 
 
