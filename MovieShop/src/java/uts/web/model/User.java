@@ -14,6 +14,7 @@ public class User implements Serializable {
     private String name;
     private String password;
     private String phonenumber;
+    private boolean valid;
     
     public User() {
         super();
@@ -58,4 +59,13 @@ public class User implements Serializable {
     public void setPhoneNumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
+    
+    public boolean isValid() {
+         return valid;
+    }
+
+      public void setValid(boolean newValid) {
+         valid = newValid;
+    }	
+    
 }

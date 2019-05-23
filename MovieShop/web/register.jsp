@@ -64,7 +64,7 @@
                 <tr><td>Name:</td><td><input size="25" type="text" name="name"></td></tr>
                 <tr><td>Email:</td><td><input size="25" type="text" name="email"></td></tr>
                 <tr><td>Password:</td><td><input size="25" type="password" name="password"></td></tr>
-                <tr><td>Phone Number:</td><td><input size="25" type="text" name="phone"></td></tr> 
+                <tr><td>Phone Number:</td><td><input size="25" type="text" name="phone"></td></tr>
                 <tr><td></td>
                     <td>
                         <input class="button" type="submit" value="Register" onclick="location.href = 'welcome.jsp'"> 
@@ -74,12 +74,9 @@
                 </tr>
             </table>
             </form>
-                
-            
             
             <div class="fixed-bottom" style="background-color: orange; ">
             <div class ="row">
-               
                 <div class="col-sm-1 ">
                     <a>We accept: </a>
                 </div>

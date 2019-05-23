@@ -3,7 +3,7 @@
     Created on : 13/05/2019, 3:07:55 PM
     Author     : francobuena
 --%>
-
+<%@page import="uts.web.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,6 +14,15 @@
         <link rel="stylesheet" type="text/css" href="./style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
+    
+    <%
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String phonenumber = request.getParameter("phone");
+        User user = (User) session.getAttribute("user");
+    %>
+    
     <body>
         <div class="container-fluid" style="background-color: silver; height: 900px; width: 100%;">
         <div class="row" style="background-color: orange;  height: auto;">
@@ -63,10 +72,10 @@
             <br>
             <form action="save_details.jsp" method="post">
                 <table>
-                <tr><td>Name:</td><td><input size="25" type="text" name="newname"></td></tr>
-                <tr><td>Email:</td><td><input size="25" type="text" name="newemail"></td></tr>
-                <tr><td>Password:</td><td><input size="25" type="password" name="password"></td></tr>
-                <tr><td>Phone Number:</td><td><input size="25" type="text" name="newphone"></td></tr> 
+                <tr><td>Name:</td><td><input size="25" type="text" name="newname" value="<%= user.getName()%>"></td></tr>
+                <tr><td>Email:</td><td><input size="25" type="text" name="newemail" value="<%= user.getEmail()%>"></td></tr>
+                <tr><td>Password:</td><td><input size="25" type="password" name="password" value="<%= user.getPassword()%>"></td></tr>
+                <tr><td>Phone Number:</td><td><input size="25" type="text" name="newphone" value="<%= user.getPhoneNumber()%>"></td></tr> 
                 <tr><td></td>
                     <td>
                         <input class="button" type="submit" value="Save" onclick="location.href = 'save_details.jsp'"> 
@@ -77,11 +86,8 @@
             </table>
             </form>
                 
-            
-            
             <div class="fixed-bottom" style="background-color: orange; ">
             <div class ="row">
-               
                 <div class="col-sm-1 ">
                     <a>We accept: </a>
                 </div>
