@@ -24,10 +24,11 @@ enum ShipmentType{
 }
 
 public class Shipment implements Serializable{
-    private String shipID; 
+    private int shipID; 
     private String email;   
-    private String name;
+    private String address;
     private String trackingNo;
+    private String name;
     private int userID;
     private ShipmentType type;
     private LocalDate date;
@@ -43,22 +44,32 @@ public class Shipment implements Serializable{
         status = ShipmentStatus.PROCESSING;
     }
 
-    public Shipment(String shipID, String email, String name, String trackingNo, int userID, ShipmentType type, LocalDate date, ShipmentStatus status) {
+    public Shipment(int shipID, String email, String address, String trackingNo, String name, int userID, ShipmentType type, LocalDate date, ShipmentStatus status) {
         this.shipID = shipID;
         this.email = email;
-        this.name = name;
+        this.address = address;
         this.trackingNo = trackingNo;
+        this.name = name;
         this.userID = userID;
         this.type = type;
         this.date = date;
         this.status = status;
+    
+}
+
+    public String getName() {
+        return name;
     }
 
-   public String getShipID() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+   public int getShipID() {
         return shipID;
     }
 
-    public void setShipID(String shipID) {
+    public void setShipID(int shipID) {
         this.shipID = shipID;
     }
 
@@ -70,12 +81,18 @@ public class Shipment implements Serializable{
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getAddress() {
+        return address ;
+    }
+    public ShipmentType getType(){
+        return type;
+    }
+    public void setType(ShipmentType type){
+        this.type = type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getTrackingNo() {
