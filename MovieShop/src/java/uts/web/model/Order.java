@@ -5,13 +5,12 @@
  */
 package uts.web.model;
 
-
-
+import java.io.Serializable;
 /**
  *
  * @author yantoyanto
  */
-public class Order {
+public class Order implements Serializable {
     private int orderID;
   //  private int userID;
     private int movieID; //Movie movie;
@@ -33,16 +32,7 @@ public class Order {
         this.status = status;
         this.date = date;
         this.price = price;
-    }
-    /*
-    public void createOrder(String userID, int movieID, String trackingNo, String status, String date, double price){
-        this.userID = userID;
-        this.movieID = movieID;
-        this.trackingNo = trackingNo;
-        this.status = status;
-        this.date = date;
-        this.price = price;
-    }*/
+    }  
     
     public String getTrackingNo(){
         return trackingNo;
