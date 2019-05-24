@@ -28,7 +28,7 @@ public class Shipments {
         list.remove(shipment);
     }
     
-    public Shipment getShipmentWithID(String shipID){
+    public Shipment getShipmentWithID(int shipID){
        for (Shipment shipment: list){
            if(shipment.getShipID() == shipID){
                return shipment;

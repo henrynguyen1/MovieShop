@@ -21,6 +21,6 @@ import javax.servlet.http.HttpServletResponse;
  * requests from the user.
  * @author henry117
  */
-public class ShipmentControllerServlet extends HttpServlet{
+public class ShipmentControllerServlet extends HttpServlet {
     
 }
