@@ -109,8 +109,11 @@ public class PaymentDAO {
         // Primary key to search for.
         ps.setInt(7, payment.getPaymentID());
         
-        // Update the database and count how many rows were updated.
-        rowUpdated = ps.executeUpdate();
+        // Only SUBMITTED or SAVED payments can be updated.
+        if(payment.getStatus().equalsIgnoreCase("SUBMITTED") ||
+                payment.getStatus().equalsIgnoreCase("SAVED")) {
+            rowUpdated = ps.executeUpdate();
+        } // else, don't update the row and rowUpdated remains at 0.
 
         // Close PreparedStatement object then close the connection to the DB.
         ps.close();
