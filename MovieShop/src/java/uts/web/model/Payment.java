@@ -54,14 +54,14 @@ public class Payment implements Serializable {
     }
 
     public Payment(int paymentID, int orderID, int userID, double amount,
-            PaymentType type, LocalDate date, PaymentStatus status) {
+            String type, LocalDate date, String status) {
         this.paymentID = paymentID;
         this.orderID = orderID;
         this.userID = userID;
         this.amount = amount;
-        this.type = type;
+        this.type = PaymentType.valueOf(type);
         this.date = date;
-        this.status = status;
+        this.status = PaymentStatus.valueOf(status);
     }
 
     public double getAmount() {
@@ -72,8 +72,8 @@ public class Payment implements Serializable {
         return date;
     }
 
-    public PaymentType getMethod() {
-        return type;
+    public String getMethod() {
+        return type.toString();
     }
 
     public int getOrderID() {
@@ -88,8 +88,8 @@ public class Payment implements Serializable {
         return userID;
     }
     
-    public PaymentStatus getStatus() {
-        return status;
+    public String getStatus() {
+        return status.toString();
     }
 
     public void setAmount(double amount) {
@@ -100,15 +100,11 @@ public class Payment implements Serializable {
     }
 
     public void setDate(LocalDate date) {
-        // The transaction date cannot be set in the past.
-        if (!(date.isBefore(LocalDate.now()))) {
-            this.date = date;
-        }
-        // TODO: else throw exception
+        this.date = date;
     }
 
-    public void setMethod(PaymentType type) {
-        this.type = type;
+    public void setMethod(String type) {
+        this.type = PaymentType.valueOf(type);
     }
 
     public void setOrderID(int orderID) {
@@ -132,7 +128,7 @@ public class Payment implements Serializable {
         // TODO: else throw exception
     }
     
-    public void setStatus(PaymentStatus status) {
-        this.status = status;
+    public void setStatus(String status) {
+        this.status = PaymentStatus.valueOf(status);
     }
 }
