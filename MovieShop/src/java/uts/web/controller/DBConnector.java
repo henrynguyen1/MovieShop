@@ -24,8 +24,8 @@ public class DBConnector{
      */
     public DBConnector() {
         URL = "jdbc:derby://localhost:1527/MovieShopDB";
-        DBUSER = "moviestore"; 
-        DBPASS = "moviestorepassword";
+        DBUSER = "movieshop"; 
+        DBPASS = "movieshop";
         DRIVER = "org.apache.derby.jdbc.ClientDriver";
         conn = null;
     }
