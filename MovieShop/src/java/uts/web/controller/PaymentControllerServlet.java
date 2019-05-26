@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 import uts.web.model.Payment;
 /**
  * Servlet for sending data between Payment JSPs model class.
+ * Based on the CRUD example supplied on UTS Online.
+ * (https://www.codejava.net/coding/jsp-servlet-jdbc-mysql-create-read-update-delete-crud-example)
  * @author Ben Stevens (02078018)
  */
 public class PaymentControllerServlet extends HttpServlet {
