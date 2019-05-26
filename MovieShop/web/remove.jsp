@@ -3,7 +3,7 @@
     Created on : 16/05/2019, 4:03:25 PM
     Author     : francobuena
 --%>
-
+<%@page import="uts.web.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,6 +14,15 @@
         <link rel="stylesheet" type="text/css" href="./style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
+    
+    <%
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String phonenumber = request.getParameter("phone");
+        User user = (User) session.getAttribute("user");
+    %>
+    
     <body>
         <div class="container-fluid" style="background-color: silver; height: 900px; width: 100%;">
         <div class="row" style="background-color: orange;  height: auto;">
@@ -56,13 +65,12 @@
         <div class="container mt-lg-4 mt-sm-2 pb-4" style="width:100%; height:650px; background-color: lightgray;">
                <div class="row" style="background-color: lightgray;">
                    <div class="col mt-5" style="text-align: left;">
-                         <h2> Are you sure you want to delete your account? </h2>
-                         <h3> Here are your details: </h3>
+                        <h2> Are you sure you want to delete your account? </h2>
+                        <p>Name: <%= user.getName()%></p> 
+                        <p>Email: <%= user.getEmail()%></p>
+                        <p>Phone: <%= user.getPhoneNumber()%></p> 
                    </div>
-               </div>    
-            
-            
-            
+               </div>  
             <button class="button" type="submit" onclick="location.href = 'confirm_delete.jsp'"> Confirm </button>
             &nbsp; 
             <button class="button" type="button" onclick="location.href = 'welcome.jsp'" > Cancel </button>

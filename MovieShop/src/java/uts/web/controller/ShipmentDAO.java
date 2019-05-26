@@ -16,19 +16,7 @@ import java.util.*;
  *
  * @author henry117
  */
-enum ShipmentStatus {
-    PROCESSING,
-    DESPATCHED,
-    TRANSIT,
-    DELIVERED,
-    
-}
-enum ShipmentType{
-    STANDARD,
-    EXPRESS,
-    LOCALPICKUP,
 
-}
 public class ShipmentDAO {
     private final DBConnector DBCONN;
     private Connection conn;
@@ -74,9 +62,9 @@ public boolean AddShipment(Shipment shipment) throws SQLException{
     pstmt.setString(3, shipment.getAddress());
     pstmt.setString(4, shipment.getTrackingNo());
     pstmt.setInt(5, shipment.getUserID());
-    pstmt.setObject(6, shipment.getType());
+    pstmt.setString(6, shipment.getType());
     pstmt.setObject(7, shipment.getDate());
-    pstmt.setObject(8, shipment.getStatus());
+    pstmt.setString(8, shipment.getStatus());
     }
         
         boolean rowInserted = pstmt.executeUpdate() > 0;
@@ -96,9 +84,9 @@ public boolean updateShipment(Shipment shipment) throws SQLException {
     pstmt.setString(3, shipment.getAddress());
     pstmt.setString(4, shipment.getTrackingNo());
     pstmt.setInt(5, shipment.getUserID());
-    pstmt.setObject(6, shipment.getType());
+    pstmt.setString(6, shipment.getType());
     pstmt.setObject(7, shipment.getDate());
-    pstmt.setObject(8, shipment.getStatus());
+    pstmt.setString(8, shipment.getStatus());
     
     boolean update = pstmt.executeUpdate() > 0;
         pstmt.close();
@@ -106,7 +94,12 @@ public boolean updateShipment(Shipment shipment) throws SQLException {
         return update; 
 
 }
+public boolean deleteShipment(Shipment shipment) throws SQLException {
+    Connection connect = DBCONN.openConnection();    
+    PreparedStatement pstmt = conn.prepareStatement(DELETE_QUERY);
+    
 
+}
 
 
 
@@ -123,9 +116,9 @@ public List<Shipment> ListShipments()throws SQLException{
             String address = rst.getString("address");
             String trackingNo = rst.getString("trackingNo");
             int userID = rst.getInt("userID");
-            ShipmentType type = rst.getObject("type", ShipmentType.class);
+            String type = rst.getString("type");
             LocalDate date = rst.getObject("date", LocalDate.class);
-            ShipmentStatus status = rst.getObject("status", ShipmentStatus.class);;
+            String status = rst.getString("status");;
              
             Shipment shipment = new Shipment();
             listShipment.add(shipment);
