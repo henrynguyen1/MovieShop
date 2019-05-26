@@ -9,19 +9,7 @@ import java.time.LocalDate;
  *
  * @author henry117
  */
-enum ShipmentStatus {
-    PROCESSING,
-    DESPATCHED,
-    TRANSIT,
-    DELIVERED,
-    
-}
-enum ShipmentType{
-    STANDARD,
-    EXPRESS,
-    LOCALPICKUP,
 
-}
 
 public class Shipment implements Serializable{
     private int shipID; 
@@ -30,27 +18,27 @@ public class Shipment implements Serializable{
     private String trackingNo;
     private String name;
     private int userID;
-    private ShipmentType type;
+    private String type;
     private LocalDate date;
-    private ShipmentStatus status;
-    
-    
+    private String status;
     
     
     
     public Shipment() {
-        type = ShipmentType.STANDARD;
+        type = "STANDARD";
         date = LocalDate.now();
-        status = ShipmentStatus.PROCESSING;
+        status = "PROCESSING";
+    }
+    public Shipment(int shipID, String trackingNo, int userID){
+       this.shipID = shipID;
+       this.trackingNo = trackingNo;
+       this.userID = userID;
     }
 
-    public Shipment(int shipID, String email, String address, String trackingNo, String name, int userID, ShipmentType type, LocalDate date, ShipmentStatus status) {
-        this.shipID = shipID;
+    public Shipment(String email, String address, String name, String type, LocalDate date, String status) {
         this.email = email;
         this.address = address;
-        this.trackingNo = trackingNo;
         this.name = name;
-        this.userID = userID;
         this.type = type;
         this.date = date;
         this.status = status;
@@ -84,10 +72,10 @@ public class Shipment implements Serializable{
     public String getAddress() {
         return address ;
     }
-    public ShipmentType getType(){
+    public String getType(){
         return type;
     }
-    public void setType(ShipmentType type){
+    public void setType(String type){
         this.type = type;
     }
 
@@ -99,10 +87,10 @@ public class Shipment implements Serializable{
         return trackingNo;
     }
    
-    public ShipmentStatus getStatus() {
+    public String getStatus() {
         return status;
     }
-    public void setStatus(ShipmentStatus status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
