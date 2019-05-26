@@ -6,7 +6,11 @@
 package uts.web.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+//import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +22,10 @@ import uts.web.model.Payment;
  * @author Ben Stevens (02078018)
  */
 public class PaymentControllerServlet extends HttpServlet {
-
+    
+    private static final long serialVersionUID = 1L;
+    private final PaymentDAO PDAO = new PaymentDAO();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,10 +37,38 @@ public class PaymentControllerServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        String action = request.getServletPath();
+        
+        //try {
+            switch(action) {
+                case "/new":
+                    // TODO: show new_payment.jsp
+                    break;
+                case "/insert":
+                    // TODO: add new payment to database
+                    break;
+                case "/delete":
+                    // TODO: delete payment from database before it's finalised
+                    break;
+                case "/edit":
+                    // TODO: show new_payment.jsp with payment preloaded
+                    break;
+                case "/update":
+                    // TODO: update payment in database before it's finalised
+                    break;
+                default:
+                    // TODO: get payment history for user
+                    break;
+            }
+        //}
+        /*catch (SQLException sqle) {
+            throw new ServletException(sqle);
+        }*/
+        
+        //response.setContentType("text/html;charset=UTF-8");
+        //try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
+            /*out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet PaymentControllerServlet</title>");            
@@ -42,7 +77,7 @@ public class PaymentControllerServlet extends HttpServlet {
             out.println("<h1>Servlet PaymentControllerServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-        }
+        }*/
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
