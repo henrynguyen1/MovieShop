@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import uts.web.model.Payment;
 /**
  * Servlet for sending data between Payment JSPs model class.
  * @author Ben Stevens (02078018)
