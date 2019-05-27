@@ -2,12 +2,22 @@
     Document   : shipment_edit
     Created on : 27/05/2019, 5:50:18 PM
     Author     : HenryNguyen
---%>
+--%><%@page import="uts.web.model.*"%>
+
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <% 
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        String type = request.getParameter("type");
+        User user = (User) session.getAttribute("user");
+        
+         %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
 
