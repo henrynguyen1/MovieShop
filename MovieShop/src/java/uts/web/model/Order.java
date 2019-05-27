@@ -6,6 +6,11 @@
 package uts.web.model;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 /**
  *
  * @author yantoyanto
@@ -16,7 +21,8 @@ public class Order implements Serializable {
     private int movieID; //Movie movie;
     private String trackingNo;
     private String status;
-    private String date;
+    private Date date = new Date();
+    //private DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private double price;
     private int userID;
     
@@ -25,11 +31,12 @@ public class Order implements Serializable {
     
     }
     
-    public Order(int userID, int movieID, String trackingNo, String status, String date, double price){
+    public Order(int userID, int movieID, String trackingNo, String status, Date date, double price){
         this.userID = userID;
         this.movieID = movieID;
         this.trackingNo = trackingNo;
         this.status = status;
+        LocalDateTime now = LocalDateTime.now();
         this.date = date;
         this.price = price;
     }  
@@ -46,11 +53,11 @@ public class Order implements Serializable {
         this.status = status;
     }
     
-    public String getDate(){
+    public Date getDate(){
         return date;
     }
     
-    public void setDate(String date){
+    public void setDate(Date date){
         this.date = date;
     }
     
@@ -61,4 +68,14 @@ public class Order implements Serializable {
     public void setPrice(double price){
         this.price = price;
     }
+
+    public int getUserID() {
+        return userID;
+    }
+    
+    public int getOrderID(){
+        return orderID;
+    }
+    
+   
 }
