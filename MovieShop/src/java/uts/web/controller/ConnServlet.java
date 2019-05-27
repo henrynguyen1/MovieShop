@@ -31,11 +31,11 @@ public class ConnServlet extends HttpServlet {
     
     @Override //Create and instance of DBConnector for the deployment session
     public void init() {
-        try {
+        //try {
             db = new DBConnector();
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }       
+        //} catch (ClassNotFoundException | SQLException ex) {
+        //    Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
+        //}       
     }
     
     @Override //Add the DBManager instance to the session 
@@ -43,8 +43,9 @@ public class ConnServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");        
         HttpSession session = request.getSession();
-        conn = db.openConnection();        
+        
         try {
+            conn = db.openConnection();
             manager = new DBManager(conn);
         } catch (SQLException ex) {
             Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
