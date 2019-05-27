@@ -4,7 +4,7 @@
     Author     : zaain
 --%>
 
-<%@page contentType="text/html" import="java.util.*" import="oms.model.*" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" import="java.util.*" import="uts.web.model" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>

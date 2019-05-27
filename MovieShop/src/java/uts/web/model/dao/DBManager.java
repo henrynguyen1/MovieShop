@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package uts.isd.model.dao;
+package uts.web.model.dao;
 
-import uts.isd.model.dao.DBConnector;
+import uts.web.model.dao.DBConnector;
 import java.sql.*;
 import uts.web.model.User;
 

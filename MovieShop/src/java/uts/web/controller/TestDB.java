@@ -5,8 +5,8 @@
  */
 package uts.web.controller;
 
-import uts.isd.model.dao.DBManager;
-import uts.isd.model.dao.DBConnector;
+import uts.web.model.dao.DBManager;
+import uts.web.model.dao.DBConnector;
 import uts.web.model.User;
 import java.sql.*;
 import java.util.*;

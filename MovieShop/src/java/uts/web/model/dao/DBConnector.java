@@ -1,4 +1,4 @@
-package uts.isd.model.dao;
+package uts.web.model.dao;
 
 
 import java.sql.Connection;

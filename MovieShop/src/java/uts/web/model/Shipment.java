@@ -15,7 +15,7 @@ public class Shipment implements Serializable{
     private int shipID; 
     private String email;   
     private String address;
-    private String trackingNo;
+    private int trackingNo;
     private String name;
     private int userID;
     private String type;
@@ -33,7 +33,7 @@ public class Shipment implements Serializable{
        this.shipID = shipID;
     
     }
-    public Shipment( String trackingNo, int userID, LocalDate date, String status){
+    public Shipment( int trackingNo, int userID, LocalDate date, String status){
        
        this.trackingNo = trackingNo;
        this.userID = userID;
@@ -90,7 +90,7 @@ public class Shipment implements Serializable{
         this.address = address;
     }
 
-    public String getTrackingNo() {
+    public int getTrackingNo() {
         return trackingNo;
     }
    

@@ -7,8 +7,10 @@ package uts.web.controller;
 
 import java.sql.*;
 import uts.web.model.*;
+
 import java.time.*;
 import java.util.*;
+import uts.web.model.dao.DBConnector;
 
 
 
@@ -76,15 +78,10 @@ public int updateShipment(Shipment shipment) throws SQLException {
     PreparedStatement pstmt = conn.prepareStatement(UPDATE_QUERY);
     int rowUpdated = 0;
         
-    pstmt.setInt(1, shipment.getShipID());
     pstmt.setString(2, shipment.getEmail());
     pstmt.setString(2, shipment.getName());
     pstmt.setString(3, shipment.getAddress());
-    pstmt.setString(4, shipment.getTrackingNo());
-    pstmt.setInt(5, shipment.getUserID());
     pstmt.setString(6, shipment.getType());
-    pstmt.setObject(7, shipment.getDate());
-    pstmt.setString(8, shipment.getStatus());
     
     if (shipment.getStatus()=="SUBMITTED"){
     rowUpdated = pstmt.executeUpdate();

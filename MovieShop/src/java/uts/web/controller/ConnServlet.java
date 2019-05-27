@@ -5,8 +5,8 @@
  */
 package uts.web.controller;
 
-import uts.isd.model.dao.DBManager;
-import uts.isd.model.dao.DBConnector;
+import uts.web.model.dao.DBManager;
+import uts.web.model.dao.DBConnector;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import uts.isd.model.dao.*;
 
 /**
  *

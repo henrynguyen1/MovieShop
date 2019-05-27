@@ -5,10 +5,8 @@
  */
 package uts.web.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.sql.*;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
@@ -16,6 +14,7 @@ import java.util.logging.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import uts.web.model.*;
+import uts.web.model.dao.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -43,8 +42,14 @@ public class ShipmentControllerServlet extends HttpServlet {
      */
       @Override //Create and instance of DBConnector for the deployment session
     public void init() {
-       db = new DBConnector();
-       shipmentDAO = new ShipmentDAO();
+        try {
+            db = new DBConnector();
+            shipmentDAO = new ShipmentDAO();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ShipmentControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ShipmentControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
      /**
