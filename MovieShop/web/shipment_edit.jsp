@@ -18,7 +18,7 @@
     <body>
         <h1>Edit Shipment Details</h1>
          <tr>
-                <th>Author: </th>
+                <th>Email: </th>
                 <td>
                     <input type="text" name="email" size="45"
                             value="<c:out value='${shipment.email}' />"
@@ -33,11 +33,13 @@
                     />
                 </td>
                 <td>
+                <th>Name: </th>
                     <input type="text" name="name" size="5"
                             value="<c:out value='${shipment.name}' />"
                     />
                 </td>
                 <td>
+                <th>Shipment Type</th>
                     <input type="text" name="type" size="5"
                             value="<c:out value='${shipment.type}' />"
                     />
