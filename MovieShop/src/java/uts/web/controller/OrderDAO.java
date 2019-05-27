@@ -53,7 +53,7 @@ public class OrderDAO {
     }
      
      public boolean addOrder(Order order) throws SQLException{
-         String sql = "INSERT INTO order(userID, movieID, trackingNo, status, date, price) VALUES (?,?,?,?,?,?)";
+         String sql = "INSERT INTO Order_T(userID, movieID, trackingNo, status, date, price) VALUES (?,?,?,?,?,?)";
          connect();
          
          PreparedStatement statement = jdbcConnection.prepareStatement(sql);
@@ -71,7 +71,7 @@ public class OrderDAO {
      }
       
      public boolean updateOrder(Order order) throws SQLException{
-         String sql = "UPDATE order SET status = ?";
+         String sql = "UPDATE ORDER_T SET status = ?";
          
          connect();
          
@@ -86,7 +86,7 @@ public class OrderDAO {
     
      /*
     public boolean deleteOrder(Order order) throws SQLException {
-        String sql = "DELETE FROM order where orderid = ?";
+        String sql = "DELETE FROM ORDER_T where orderid = ?";
          
         connect();
          
@@ -102,7 +102,7 @@ public class OrderDAO {
     public List<Order> listAllOrder() throws SQLException {
         List<Order> listOrder = new ArrayList<>();
          
-        String sql = "SELECT * FROM order";
+        String sql = "SELECT * FROM ORDER_T";
          
         connect();
          
@@ -131,7 +131,7 @@ public class OrderDAO {
     
     public Order getOrder(int id) throws SQLException {
         Order order = null;
-        String sql = "SELECT * FROM order WHERE orderID = ?";
+        String sql = "SELECT * FROM ORDER_T WHERE orderID = ?";
          
         connect();
          

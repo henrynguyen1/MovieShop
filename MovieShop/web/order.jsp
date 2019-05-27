@@ -4,6 +4,7 @@
     Author     : yantoyanto
 --%>
 
+<%@page import="uts.isd.model.dao.DBManager"%>
 <%@page import="uts.web.model.Movie"%>
 <%@page import="uts.web.controller.OrderController" %>
 <%@page import="uts.web.model.Order" %>
@@ -63,7 +64,8 @@
         <h2>Order</h2>
         </div>
              
-             
+             <%
+              %>
         <div class="container" style="background-color: white; height: 600px;">
         <form>
             <table class="table">
@@ -85,15 +87,10 @@
                     <td>$ 2.50</td>
                     <td><button type="button" class="btn btn-danger">Remove</button></td>
                 </tr>
+               
                 <tr>
-                   
-                    <td>Item 1</td>
-                    <td>1</td>
-                    <td>$ 2.50</td>
-                    <td>$ 2.50</td>
-                    <td><button type="button" class="btn btn-danger">Remove</button></td>
+                    <td></td>
                 </tr>
-                
             </table>
         </form>
             <div class="col" style="text-align: right;">
