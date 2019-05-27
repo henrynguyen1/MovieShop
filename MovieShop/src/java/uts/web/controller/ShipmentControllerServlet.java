@@ -17,6 +17,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import uts.web.model.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 /**
@@ -88,20 +89,16 @@ public class ShipmentControllerServlet extends HttpServlet {
     private void insertShipment (HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
        
-         
         String email = request.getParameter("email");   
         String address = request.getParameter("address");
         String name = request.getParameter("name");
         String type = request.getParameter("type");
-        String date = request.getParameter("date");
-        String status =  request.getParameter("status");
-        
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy"); 
         
         
+        Shipment newShipment  = new Shipment(email, address,  name, type);
+        ShipmentDAO dao = new ShipmentDAO();
+        dao.addShipment(newShipment);
         
-        Shipment shipment  = new Shipment(email, address,  name, type, date, status);
-        ShipmentDAO.AddShipment(shipment);
         
         response.sendRedirect("list");
         
@@ -109,13 +106,38 @@ public class ShipmentControllerServlet extends HttpServlet {
     }
     
     private void modifyShipment (HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {}
+            throws SQLException, IOException, ServletException {
+        String email = request.getParameter("email");   
+        String address = request.getParameter("address");
+        String name = request.getParameter("name");
+        String type = request.getParameter("type");
+        
+        
+        Shipment newShipment  = new Shipment(email, address,  name, type);
+        ShipmentDAO dao = new ShipmentDAO();
+        dao.updateShipment(newShipment);
+        
+        
+        response.sendRedirect("list");
+    }
    
     private void deleteShipment (HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {}
+            throws SQLException, IOException, ServletException {
+       
+        int shipID = Integer.parseInt(request.getParameter("shipID"));
+        
+        Shipment shipment = new Shipment(shipID);
+        ShipmentDAO dao = new ShipmentDAO();
+        dao.deleteShipment(shipment);
+        response.sendRedirect("list");}
     
     private void listShipments (HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {}
+            throws SQLException, IOException, ServletException {
+        List <Shipment> listShipment = new ArrayList<>();
+        request.setAttribute("listShipment", listShipment);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("ViewShipment.jsp");
+        dispatcher.forward(request, response);
+    }
     
     
 

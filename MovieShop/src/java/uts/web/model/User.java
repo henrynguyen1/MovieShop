@@ -10,22 +10,43 @@ import java.io.Serializable;
  * @author francobuena
  */
 public class User implements Serializable {
+    private String ID;
     private String email;
     private String name;
     private String password;
     private String phonenumber;
-    private boolean valid;
     
-    public User() {
-        super();
-    }
-    
-    public User(String email, String name, String password, String phonenumber) {
-        super();
+    public User(String ID, String email, String name, String password, String phonenumber) {
         this.email = email;
         this.name = name;
         this.password = password;
         this.phonenumber = phonenumber;
+        this.ID = ID;
+    }
+    
+    public User() { }
+    
+    public void updateDetails(String email, String name, String password, String phonenumber) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.phonenumber = phonenumber;
+    }
+    
+    public boolean matchID(String ID){
+        return this.ID.equals(ID.trim());
+    }
+    
+    public boolean matchPassword(String password){
+        return this.password.equals(password.trim());
+    }
+    
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
     
     public String getEmail() {
@@ -59,13 +80,5 @@ public class User implements Serializable {
     public void setPhoneNumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
-    
-    public boolean isValid() {
-         return valid;
-    }
-
-      public void setValid(boolean newValid) {
-         valid = newValid;
-    }	
     
 }

@@ -27,23 +27,30 @@ public class Shipment implements Serializable{
     public Shipment() {
         type = "STANDARD";
         date = LocalDate.now();
-        status = "PROCESSING";
+        status = "SUBMITTED";
     }
-    public Shipment(int shipID, String trackingNo, int userID){
+    public Shipment(int shipID){
        this.shipID = shipID;
+    
+    }
+    public Shipment( String trackingNo, int userID, LocalDate date, String status){
+       
        this.trackingNo = trackingNo;
        this.userID = userID;
+       this.date = date;
+       this.status = status;
+
     }
 
-    public Shipment(String email, String address, String name, String type, LocalDate date, String status) {
+
+    public Shipment(String email, String address, String name, String type ) {
+        this.shipID = shipID;
         this.email = email;
         this.address = address;
         this.name = name;
         this.type = type;
-        this.date = date;
-        this.status = status;
-    
-}
+       
+    }
 
     public String getName() {
         return name;

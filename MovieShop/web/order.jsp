@@ -4,11 +4,12 @@
     Author     : yantoyanto
 --%>
 
+<%@page import="uts.web.model.Movie"%>
 <%@page import="uts.web.controller.OrderController" %>
 <%@page import="uts.web.model.Order" %>
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ page language="java" import="java.sql.*" errorPage="" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -92,6 +93,7 @@
                     <td>$ 2.50</td>
                     <td><button type="button" class="btn btn-danger">Remove</button></td>
                 </tr>
+                
             </table>
         </form>
             <div class="col" style="text-align: right;">
