@@ -1,4 +1,4 @@
-package uts.web.controller;
+package uts.isd.model.dao;
 
 
 import java.sql.Connection;
@@ -12,7 +12,8 @@ import java.sql.SQLException;
  * https://www.codejava.net/coding/jsp-servlet-jdbc-mysql-create-read-update-delete-crud-example
  * @author George and Ben Stevens (02078018)
  */
-public class DBConnector{
+public class DBConnector extends DB {
+    /**
     private final String URL;
     private final String DBUSER;
     private final String DBPASS;
@@ -21,13 +22,18 @@ public class DBConnector{
     
     /**
      * Default constructor for creating connections to MovieShopDB.
-     */
+     
     public DBConnector() {
         URL = "jdbc:derby://localhost:1527/MovieShopDB";
         DBUSER = "movieshop"; 
         DBPASS = "movieshop";
         DRIVER = "org.apache.derby.jdbc.ClientDriver";
         conn = null;
+    }
+    */
+    public DBConnector() throws ClassNotFoundException, SQLException {
+        Class.forName(driver);
+        conn = DriverManager.getConnection(URL, dbuser, dbpass);
     }
 
     /**
@@ -36,7 +42,8 @@ public class DBConnector{
      * @throws SQLException - No connections can be created if the DB is not
      *                        running.
      */
-    protected Connection openConnection() throws SQLException {
+    public Connection openConnection() {
+        /**
         try {
             Class.forName(DRIVER);
             conn = DriverManager.getConnection(URL, DBUSER, DBPASS);
@@ -45,6 +52,7 @@ public class DBConnector{
             //connection to DB could not be created.
             throw new SQLException(cnfe);
         }
+        */
         return this.conn;
     }
     
@@ -52,9 +60,10 @@ public class DBConnector{
      * Close the connection to MovieShopDB when it is no longer needed.
      * @throws SQLException - Connection to MovieShopDB not found.
      */
-    protected void closeConnection() throws SQLException {
-        if (conn != null && !conn.isClosed()) {
+    public void closeConnection() throws SQLException {
+        
+        //if (conn != null && !conn.isClosed()) {
             this.conn.close();
-        }
+       // }
     }
 }

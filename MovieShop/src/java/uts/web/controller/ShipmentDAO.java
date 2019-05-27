@@ -31,10 +31,11 @@ public class ShipmentDAO {
     private String sql;
     
     
+    
     public ShipmentDAO(){
-        INSERT_QUERY = "INSERT INTO shipments (shipID, email, address, trackingNo, userID, type, date, status)"
-                + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        UPDATE_QUERY = "UPDATE shipments SET email = ?, address = ?, date = ?, name = ?, type = ?, status = ?"
+        INSERT_QUERY = "INSERT INTO shipments (email, address, name, type)"
+                + " VALUES (?, ?, ?, ?)";
+        UPDATE_QUERY = "UPDATE shipments SET email = ?, address = ?, name = ?, type = ?"
                 + " WHERE ShipmentID = ?";
         DELETE_QUERY = "DELETE FROM shipment WHERE ShipmentID = ?";
         SHIPMENT_SELECT = "SELECT * FROM shipment WHERE ShipmentID = ?";
@@ -53,30 +54,27 @@ public class ShipmentDAO {
     }
 
 
-public boolean AddShipment(Shipment shipment) throws SQLException{
+public int addShipment(Shipment shipment) throws SQLException{
     Connection connect = DBCONN.openConnection();  
     PreparedStatement pstmt = conn.prepareStatement(INSERT_QUERY); {
-    pstmt.setInt(1, shipment.getShipID());
-    pstmt.setString(2, shipment.getEmail());
+    pstmt.setString(1, shipment.getEmail());
     pstmt.setString(2, shipment.getName());
     pstmt.setString(3, shipment.getAddress());
-    pstmt.setString(4, shipment.getTrackingNo());
-    pstmt.setInt(5, shipment.getUserID());
-    pstmt.setString(6, shipment.getType());
-    pstmt.setObject(7, shipment.getDate());
-    pstmt.setString(8, shipment.getStatus());
+    pstmt.setInt(4, shipment.getUserID());
+    pstmt.setString(5, shipment.getType());
+    pstmt.setString(6, shipment.getStatus());
     }
-        
-        boolean rowInserted = pstmt.executeUpdate() > 0;
+        int rowInserted = pstmt.executeUpdate();
         pstmt.close();
         disconnect();
         return rowInserted;
 
 }
 
-public boolean updateShipment(Shipment shipment) throws SQLException {
+public int updateShipment(Shipment shipment) throws SQLException {
     Connection connect = DBCONN.openConnection();    
     PreparedStatement pstmt = conn.prepareStatement(UPDATE_QUERY);
+    int rowUpdated = 0;
         
     pstmt.setInt(1, shipment.getShipID());
     pstmt.setString(2, shipment.getEmail());
@@ -88,23 +86,32 @@ public boolean updateShipment(Shipment shipment) throws SQLException {
     pstmt.setObject(7, shipment.getDate());
     pstmt.setString(8, shipment.getStatus());
     
-    boolean update = pstmt.executeUpdate() > 0;
-        pstmt.close();
-        disconnect();
-        return update; 
+    if (shipment.getStatus()=="SUBMITTED"){
+    rowUpdated = pstmt.executeUpdate();
+    }
+    pstmt.close();
+    disconnect();
+    return rowUpdated; 
 
 }
-public boolean deleteShipment(Shipment shipment) throws SQLException {
+public int deleteShipment(Shipment shipment) throws SQLException {
     Connection connect = DBCONN.openConnection();    
     PreparedStatement pstmt = conn.prepareStatement(DELETE_QUERY);
+    int rowDeleted  = 0;
+    pstmt.setInt(1,shipment.getShipID());
     
-
+    if (shipment.getStatus()=="COMPLETED"){
+       rowDeleted = pstmt.executeUpdate();
+    }
+    pstmt.close();
+    disconnect();
+    return rowDeleted;
 }
 
 
 
 
-public List<Shipment> ListShipments()throws SQLException{
+public List<Shipment> listShipments()throws SQLException{
         List<Shipment> listShipment = new ArrayList<>();
         Connection connect = DBCONN.openConnection();
         PreparedStatement pstmt = conn.prepareStatement(SHIPMENT_VIEW);
@@ -115,12 +122,14 @@ public List<Shipment> ListShipments()throws SQLException{
             String email = rst.getString("title");
             String address = rst.getString("address");
             String trackingNo = rst.getString("trackingNo");
+            String name = rst.getString("name");
             int userID = rst.getInt("userID");
             String type = rst.getString("type");
             LocalDate date = rst.getObject("date", LocalDate.class);
             String status = rst.getString("status");;
              
-            Shipment shipment = new Shipment();
+            Shipment shipment = new Shipment(shipID);
+                  
             listShipment.add(shipment);
         }
          
