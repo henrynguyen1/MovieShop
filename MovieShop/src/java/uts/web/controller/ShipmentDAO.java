@@ -116,8 +116,8 @@ public List<Shipment> listShipments()throws SQLException{
         ResultSet rst = pstmt.executeQuery();
          
         while (rst.next()) {
-            int shipID = rst.getInt("book_id");
-            String email = rst.getString("title");
+            int shipID = rst.getInt("shipID");
+            String email = rst.getString("email");
             String address = rst.getString("address");
             String trackingNo = rst.getString("trackingNo");
             String name = rst.getString("name");

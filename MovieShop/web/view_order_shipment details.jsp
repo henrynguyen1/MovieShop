@@ -39,18 +39,21 @@
                 <th>Tracking Number</th>
                 <th>Status</th>
             </tr>
-            <c:forEach var="shipment" items="${listShipments}">
+            <c:forEach var="shipment" items="${listShipment}">
                 <tr>
                     <td><c:out value="${shipment.shipID}" /></td>
                     <td><c:out value="${shipment.date}" /></td>
+                    <td><c:out value="${shipment.email}" /></td>
+                    <td><c:out value="${shipment.address}" /></td>
                     <td><c:out value="${order.movieID}" /></td>
                     <td><c:out value="${order.price}" /></td>
                     <td><c:out value="${shipment.trackingNo}" /></td>
+                    <td><c:out value="${shipment.type}" /></td>
                     <td><c:out value="${shipment.status}" /></td>
                     <td>
                         <a class="nav-link" href="./shipment_edit.jsp/>">Edit</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="/delete?id=<c:out value='${shipment.id}' />">Delete</a>                     
+                        <a href="/delete?id=<c:out value='${shipment.shipID}' />">Delete</a>                     
                     </td>
                 </tr>
             </c:forEach>
