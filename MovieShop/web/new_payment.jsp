@@ -68,7 +68,7 @@
                     <td>
                         Payment Type:
                     </td>
-                    <td><select size="25" name="paymentType">
+                    <td><select name="paymentType">
                             <option value="WALLET">WALLET</option>
                             <option value="CREDIT_CARD">CREDIT CARD</option>
                             <option value="BANK_TRANSFER">BANK TTRANSFER</option>
