@@ -41,7 +41,7 @@ public class PaymentControllerServlet extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getServletPath();
         
-        //try {
+        try {
             switch(action) {
                 case "/new":
                     // TODO: show new_payment.jsp
@@ -59,13 +59,13 @@ public class PaymentControllerServlet extends HttpServlet {
                     // TODO: update payment in database before it's finalised
                     break;
                 default:
-                    // TODO: get payment history for user
+                    listPayments(request, response, 1); // have to get user ID from previous page
                     break;
             }
-        //}
-        /*catch (SQLException sqle) {
+        }
+        catch (SQLException sqle) {
             throw new ServletException(sqle);
-        }*/
+        }
         
         //response.setContentType("text/html;charset=UTF-8");
         //try (PrintWriter out = response.getWriter()) {
@@ -120,5 +120,14 @@ public class PaymentControllerServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    private void listPayments(HttpServletRequest request, HttpServletResponse response,
+            int userID)
+            throws SQLException, IOException, ServletException {
+        ArrayList<Payment> paymentList = new ArrayList<>();
+        boolean paymentsAdded = paymentList.addAll(PDAO.getPayments(userID));
+        
+        
+    }
 
 }
