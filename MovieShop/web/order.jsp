@@ -1,10 +1,6 @@
-<%-- 
-    Document   : order
-    Created on : 13/05/2019, 10:56:00 PM
-    Author     : yantoyanto
---%>
 
-<%@page import="uts.isd.model.dao.DBManager"%>
+<%@page import="uts.web.model.OrderLine"%>
+
 <%@page import="uts.web.model.Movie"%>
 <%@page import="uts.web.controller.OrderController" %>
 <%@page import="uts.web.model.Order" %>
@@ -64,8 +60,10 @@
         <h2>Order</h2>
         </div>
              
-             <%
-              %>
+        
+               
+                
+        
         <div class="container" style="background-color: white; height: 600px;">
         <form>
             <table class="table">
@@ -89,7 +87,14 @@
                 </tr>
                
                 <tr>
-                    <td></td>
+                    <td>   <input class="col" type="text" name="movieID" size="45"
+                            value="<c:out value='${orderline.movieid}' />"
+                    />
+                    </td>
+                    <td>   <input class="col" type="text" name="price" size="45"
+                            value="<c:out value='${orderline.price}' />"
+                    />
+                    </td>
                 </tr>
             </table>
         </form>

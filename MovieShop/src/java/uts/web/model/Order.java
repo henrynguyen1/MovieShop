@@ -17,34 +17,21 @@ import java.util.Date;
  */
 public class Order implements Serializable {
     private int orderID;
-  //  private int userID;
-    private int movieID; //Movie movie;
-    private String trackingNo;
     private String status;
     private Date date = new Date();
-    //private DateTimeFormatter date = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-    private double price;
+    private double total;
     private int userID;
     
     
-    public Order(){
-    
-    }
-    
-    public Order(int userID, int movieID, String trackingNo, String status, Date date, double price){
+    public Order(int orderID, int userID, String status, Date date, double total){
+        this.orderID = orderID;
         this.userID = userID;
-        this.movieID = movieID;
-        this.trackingNo = trackingNo;
         this.status = status;
         LocalDateTime now = LocalDateTime.now();
         this.date = date;
-        this.price = price;
+        this.total = total;
     }  
-    
-    public String getTrackingNo(){
-        return trackingNo;
-    }
-    
+     
     public String getStatus(){
         return status;
     }
@@ -61,14 +48,14 @@ public class Order implements Serializable {
         this.date = date;
     }
     
-    public double getPrice(){
-        return price;
+    public double getTotal(){
+        return total;
     }
     
-    public void setPrice(double price){
-        this.price = price;
+    public void setTotal(double total){
+        this.total = total;
     }
-
+    
     public int getUserID() {
         return userID;
     }
