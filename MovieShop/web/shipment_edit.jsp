@@ -69,27 +69,22 @@
                 <th>Email: </th>
                 <td>
                     <input type="text" name="email" size="45"
-                            value="<c:out value='${Shipment.setEmail()}' />"
+                            value="<c:out value='${ShipmentList.email}' />"
                     />
                 </td>
             </tr>
             <tr>
                 <th>Price: </th>
                 <td>
-                    <input type="text" name="address" size="5"
-                            value="<c:out value='${Shipment.setAddress()}' />"
+                    <input type="text" name="address" size="10"
+                            value="<c:out value='${ShipmentList.address}' />"
                     />
                 </td>
-                <td>
-                <th>Name: </th>
-                    <input type="text" name="name" size="5"
-                            value="<c:out value='${Shipment.setName()}' />"
-                    />
-                </td>
-                <td>
+                </th>
+            </tr>
                 <th>Shipment Type</th>
-                    <input type="text" name="type" size="5"
-                            value="<c:out value='${Shipment.setType()}' />"
+                    <input type="text" name="type" size="10"
+                            value="<c:out value='${ShipmentList.type}' />"
                     />
                 </td>
             </tr>

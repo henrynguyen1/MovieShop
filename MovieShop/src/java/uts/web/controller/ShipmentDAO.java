@@ -61,7 +61,6 @@ public int addShipment(Shipment shipment) throws SQLException{
     Connection connect = DBCONN.openConnection();  
     PreparedStatement pstmt = conn.prepareStatement(INSERT_QUERY); {
     pstmt.setString(1, shipment.getEmail());
-    pstmt.setString(2, shipment.getName());
     pstmt.setString(3, shipment.getAddress());
     pstmt.setInt(4, shipment.getUserID());
     pstmt.setString(5, shipment.getType());
@@ -80,7 +79,6 @@ public int updateShipment(Shipment shipment) throws SQLException {
     int rowUpdated = 0;
         
     pstmt.setString(2, shipment.getEmail());
-    pstmt.setString(2, shipment.getName());
     pstmt.setString(3, shipment.getAddress());
     pstmt.setString(6, shipment.getType());
     
@@ -120,7 +118,6 @@ public List<Shipment> listShipments()throws SQLException{
             String email = rst.getString("email");
             String address = rst.getString("address");
             String trackingNo = rst.getString("trackingNo");
-            String name = rst.getString("name");
             int userID = rst.getInt("userID");
             String type = rst.getString("type");
             LocalDate date = rst.getObject("date", LocalDate.class);

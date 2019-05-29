@@ -16,11 +16,11 @@ public class Shipment implements Serializable{
     private String email;   
     private String address;
     private int trackingNo;
-    private String name;
     private int userID;
     private String type;
     private LocalDate date;
     private String status;
+    
     
     
     
@@ -43,22 +43,14 @@ public class Shipment implements Serializable{
     }
 
 
-    public Shipment(String email, String address, String name, String type ) {
+    public Shipment(String email, String address, String type ) {
         this.shipID = shipID;
         this.email = email;
         this.address = address;
-        this.name = name;
         this.type = type;
        
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
    public int getShipID() {
         return shipID;

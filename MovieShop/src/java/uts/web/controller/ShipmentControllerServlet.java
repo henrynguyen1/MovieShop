@@ -96,16 +96,15 @@ public class ShipmentControllerServlet extends HttpServlet {
        
         String email = request.getParameter("email");   
         String address = request.getParameter("address");
-        String name = request.getParameter("name");
         String type = request.getParameter("type");
         
         
-        Shipment newShipment  = new Shipment(email, address,  name, type);
+        Shipment newShipment  = new Shipment(email, address, type);
         ShipmentDAO dao = new ShipmentDAO();
         dao.addShipment(newShipment);
         
         
-        response.sendRedirect("list");
+        response.sendRedirect("ShippingList");
         
        
     }
@@ -114,16 +113,15 @@ public class ShipmentControllerServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         String email = request.getParameter("email");   
         String address = request.getParameter("address");
-        String name = request.getParameter("name");
         String type = request.getParameter("type");
         
         
-        Shipment newShipment  = new Shipment(email, address,  name, type);
+        Shipment newShipment  = new Shipment(email, address, type);
         ShipmentDAO dao = new ShipmentDAO();
         dao.updateShipment(newShipment);
         
         
-        response.sendRedirect("list");
+        response.sendRedirect("ShippingList");
     }
    
     private void deleteShipment (HttpServletRequest request, HttpServletResponse response)
@@ -134,7 +132,7 @@ public class ShipmentControllerServlet extends HttpServlet {
         Shipment shipment = new Shipment(shipID);
         ShipmentDAO dao = new ShipmentDAO();
         dao.deleteShipment(shipment);
-        response.sendRedirect("list");}
+        response.sendRedirect("ShippingList");}
     
     private void listShipments (HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
