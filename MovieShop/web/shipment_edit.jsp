@@ -3,6 +3,8 @@
     Created on : 27/05/2019, 5:50:18 PM
     Author     : HenryNguyen
 --%><%@page import="uts.web.model.*"%>
+--%><%@page import="uts.web.controller.*"%>
+
 
 
 
@@ -74,7 +76,7 @@
                 </td>
             </tr>
             <tr>
-                <th>Price: </th>
+                <th>Address: </th>
                 <td>
                     <input type="text" name="address" size="10"
                             value="<c:out value='${ShipmentList.address}' />"
