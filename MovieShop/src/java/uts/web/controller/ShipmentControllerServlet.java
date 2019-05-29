@@ -95,10 +95,13 @@ public class ShipmentControllerServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
        
         String email = request.getParameter("email");   
-        String address = request.getParameter("address");
-        String type = request.getParameter("type");
+        String addressline = request.getParameter("Address Line");
+        String suburb = request.getParameter("Suburb");
+        String state = request.getParameter("State");
+        String postcode = request.getParameter("Postcode");
+        String type = request.getParameter("Type");
         
-        
+        String address = addressline + ", " + suburb + ", " + state + ", "+ postcode;
         Shipment newShipment  = new Shipment(email, address, type);
         ShipmentDAO dao = new ShipmentDAO();
         dao.addShipment(newShipment);
@@ -111,11 +114,15 @@ public class ShipmentControllerServlet extends HttpServlet {
     
     private void modifyShipment (HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
+       
         String email = request.getParameter("email");   
-        String address = request.getParameter("address");
+        String addressline = request.getParameter("Address Line");
+        String suburb = request.getParameter("Suburb");
+        String state = request.getParameter("State");
+        String postcode = request.getParameter("Postcode");
         String type = request.getParameter("type");
         
-        
+        String address = addressline + ", " + suburb + ", " + state + ", "+ postcode;
         Shipment newShipment  = new Shipment(email, address, type);
         ShipmentDAO dao = new ShipmentDAO();
         dao.updateShipment(newShipment);
