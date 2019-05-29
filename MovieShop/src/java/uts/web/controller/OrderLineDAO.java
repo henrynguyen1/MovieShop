@@ -31,7 +31,7 @@ public class OrderLineDAO {
     private final String ORDER_MOVIE_SELECT;
     
     
-    public OrderLineDAO() {
+    public OrderLineDAO() throws ClassNotFoundException,  SQLException {
         INSERT_QUERY = "INSERT INTO ORDERLINE_T(orderID, movieID, price) VALUES (?,?,?)";
         DELETE_QUERY = "DELETE FROM ORDERLINE_T where orderID = ? and movieID = ?" ;
         ORDER_SELECT = "SELECT * FROM ORDERLINE_T where orderID = ?";

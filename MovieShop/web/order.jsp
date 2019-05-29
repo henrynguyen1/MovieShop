@@ -1,10 +1,9 @@
-
 <%@page import="uts.web.model.OrderLine"%>
-
 <%@page import="uts.web.model.Movie"%>
 <%@page import="uts.web.controller.OrderController" %>
 <%@page import="uts.web.model.Order" %>
 <%@page import="java.util.*"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page language="java" import="java.sql.*" errorPage="" %>
 <!DOCTYPE html>
@@ -65,7 +64,7 @@
                 
         
         <div class="container" style="background-color: white; height: 600px;">
-        <form>
+        <form action="/OrderLineControllerServlet">
             <table class="table">
                 <thead>
                 <tr class="table-warning">
@@ -77,29 +76,22 @@
                     <th></th>
                 </tr>
                 </thead>
-                <tr>
-                    
-                    <td>Item 1</td>
-                    <td>1</td>
-                    <td>$ 2.50</td>
-                    <td>$ 2.50</td>
-                    <td><button type="button" class="btn btn-danger">Remove</button></td>
-                </tr>
-               
+                
                 <tr>
                     <td>   <input class="col" type="text" name="movieID" size="45"
-                            value="<c:out value='${orderline.movieid}' />"
+                            value="<c:out value='${orderLine.movieid}' />"
                     />
                     </td>
                     <td>   <input class="col" type="text" name="price" size="45"
-                            value="<c:out value='${orderline.price}' />"
+                            value="<c:out value='${orderLine.price}' />"
                     />
                     </td>
                 </tr>
             </table>
         </form>
             <div class="col" style="text-align: right;">
-                <a class="btn btn-warning" href="./shipment.jsp">Shipment</a>
+                <a class="btn btn-warning" href="./shipment.jsp">Proceed to Shipment</a>
+                <a> Save</a>
             </div>
         </div>   
              

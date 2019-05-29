@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+      <context-param>
+        <param-name>jdbcURL</param-name>
+        <param-value>jdbc:derby://localhost:1527/MoviesDB</param-value>
+    </context-param>
+ 
+    <context-param>
+        <param-name>jdbcUsername</param-name>
+        <param-value>JB</param-value>
+    </context-param>
+ 
+    <context-param>
+        <param-name>jdbcPassword</param-name>
+        <param-value>password</param-value>
+    </context-param>
+    
+    
     <servlet>
         <servlet-name>ConnServlet</servlet-name>
         <servlet-class>uts.web.controller.ConnServlet</servlet-class>
     </servlet>
+     <servlet>
+        <servlet-name>OrderLineControllerServlet</servlet-name>
+        <servlet-class>uts.web.controller.OrderLineControllerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OrderControllerServlet</servlet-name>
+        <servlet-class>uts.web.controller.OrderControllerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderLineControllerServlet</servlet-name>
+        <url-pattern>/OrderLineControllerServlet</url-pattern>
+    </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>OrderControllerServlet</servlet-name>
+        <url-pattern>/OrderControllerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

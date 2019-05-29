@@ -30,7 +30,7 @@ public class OrderDAO {
 
      
     
-    public OrderDAO() {
+    public OrderDAO() throws ClassNotFoundException, SQLException {
         INSERT_QUERY = "INSERT INTO ORDER_T(userID, status, date, total) VALUES (?,?,?,?)";
         UPDATE_QUERY = "UPDATE ORDER_T SET status = ? where orderID = ?";
         USER_SELECT = "SELECT * FROM ORDER_T where userID = ?";
