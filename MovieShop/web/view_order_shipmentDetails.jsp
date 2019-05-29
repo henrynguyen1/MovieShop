@@ -46,12 +46,12 @@
                     <td><c:out value="${shipment.email}" /></td>
                     <td><c:out value="${shipment.address}" /></td>
                     <td><c:out value="${order.movieID}" /></td>
-                    <td><c:out value="${order.price}" /></td>
+                    <td><c:out value="${order.total}" /></td>
                     <td><c:out value="${shipment.trackingNo}" /></td>
                     <td><c:out value="${shipment.type}" /></td>
                     <td><c:out value="${shipment.status}" /></td>
                     <td>
-                        <a class="nav-link" href="./shipment_edit.jsp/>">Edit</a>
+                        <a class="nav-link" href="./shipment_edit.jsp" >Edit</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="/delete?id=<c:out value='${shipment.shipID}' />">Delete</a>                     
                     </td>
