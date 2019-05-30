@@ -25,6 +25,16 @@
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <title>Shipment Options during Order Page</title>
     </head>
+    
+    <%
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String phonenumber = request.getParameter("phone");
+        User user = (User) session.getAttribute("user");
+        Shipment shipment = (Shipment) session.getAttribute("shipment");
+        Order order = (Order) session.getAttribute("order");
+    %>
     <body>
          <div class="container-fluid" style="background-color: silver; height: 900px; width: 100%;">
              
@@ -73,15 +83,16 @@
         
         
         
-        <div class="container-fluid" style="background-color: silver; height: 2200px; width: 100%;">
+    <div class="container-fluid" style="background-color: silver; height: 2200px; width: 100%;">
              
         <form>
-            <table class="table">
-                <thead>
-                <tr class="table-warning">
+            <table class="table" border="1" cellpadding="5">
                 
-                    <th>ID</th>
-                    <th scope = "col" >Order Date</th>
+                <thead>
+            <tr class="table-warning">
+                
+                <th scope = "col"> ID</th>
+                <th scope = "col" >Order Date</th>
                 <th scope = "col" >Order Details</th>
                 <th scope = "col">Price</th>
                 <th scope = "col">Tracking Number</th>
@@ -100,9 +111,9 @@
                     <td><c:out value="${shipment.type}" /></td>
                     <td><c:out value="${shipment.status}" /></td>
                     <td>
-                        <a class="nav-link" href="./shipment_edit.jsp" >Edit</a>
+                        <a href = "/modify?id=<c:out value= <%shipment.getShipID();%> /> ">Edit</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="/delete?id=<c:out value='${shipment.shipID}' />">Delete</a>                     
+                        <a href="/delete?id=<c:out value= <%shipment.getShipID();%> />">Delete</a>                     
                     </td>
                 </tr>
             </c:forEach>

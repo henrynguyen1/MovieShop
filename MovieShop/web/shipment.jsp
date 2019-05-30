@@ -83,7 +83,7 @@
              <form>
                  <pre>
                      Standard : <input type ="submit" value ="Type"><br/>
-                     Express : <input type ="submit" value ="Type"><br/>
+                     Express (+$10): <input type ="submit" value ="Type"><br/>
                  </pre>
              </form>
                      <button class="button" type="submit" onclick="location.href = 'new_payment.jsp'"> Continue to Payment</button>

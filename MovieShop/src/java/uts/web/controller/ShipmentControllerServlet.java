@@ -82,7 +82,7 @@ public class ShipmentControllerServlet extends HttpServlet {
                 deleteShipment(request, response);
                 break;
             default:
-                listShipments(request, response);
+                listShipment(request, response);
                 break;
             }
         } catch (SQLException ex) {
@@ -141,7 +141,7 @@ public class ShipmentControllerServlet extends HttpServlet {
         dao.deleteShipment(shipment);
         response.sendRedirect("ShippingList");}
     
-    private void listShipments (HttpServletRequest request, HttpServletResponse response)
+    private void listShipment (HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         List <Shipment> listShipment = new ArrayList<>();
         request.setAttribute("listShipment", listShipment);

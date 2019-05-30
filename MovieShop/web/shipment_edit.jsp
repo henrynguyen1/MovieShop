@@ -2,7 +2,8 @@
     Document   : shipment_edit
     Created on : 27/05/2019, 5:50:18 PM
     Author     : HenryNguyen
---%><%@page import="uts.web.model.*"%>
+--%><%@page import="java.util.Random"%>
+<%@page import="uts.web.model.*"%>
 --%><%@page import="uts.web.controller.*"%>
 
 
@@ -13,11 +14,14 @@
 <html>
     <head>
         <% 
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String address = request.getParameter("address");
-        String type = request.getParameter("type");
+        String name = request.getParameter("newname");
+        String email = request.getParameter("newemail");
+        String address = request.getParameter("newaddress");
+        String type = request.getParameter("newtype");
+        
+        Shipment shipment = (Shipment) session.getAttribute("shipment");
         User user = (User) session.getAttribute("user");
+      
         
          %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -66,35 +70,48 @@
                  </div>
              </div>
          </div>
-        <h1>Edit Shipment Details</h1>
-         <tr>
+            
+          
+            
+            
+          <div align="center">
+          <form action="update" method="post">
+          <table border="1" cellpadding="5">
+        
+            <h1>Edit Shipment Details</h1>
+            <input type="hidden" name="id" value="<c:out value='${shipment.shipID}' />" />
+            <tr>
                 <th>Email: </th>
                 <td>
-                    <input type="text" name="email" size="45"
-                            value="<c:out value='${ShipmentList.email}' />"
+                    <input type="text" name="newemail" size="45"
+                     value = "<%shipment.getEmail();%>"
                     />
                 </td>
             </tr>
             <tr>
                 <th>Address: </th>
                 <td>
-                    <input type="text" name="address" size="10"
-                            value="<c:out value='${ShipmentList.address}' />"
-                    />
+                    <input type="text" name="newddress" size="10"
+                     value = "<%shipment.getAddress();%>">
                 </td>
                 </th>
             </tr>
                 <th>Shipment Type</th>
-                    <input type="text" name="type" size="10"
-                            value="<c:out value='${ShipmentList.type}' />"
-                    />
-                </td>
+                <td>
+                    <select name="newtype">
+                          <option value="<%shipment.getType();%>">Standard</option>
+                          <option value="<%shipment.getType();%>">Express</option>
+                    </select>
+                 </td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <input type="submit" value="Save" />
+                    <button class="button" type="submit" onclick="location.href = 'welcome.jsp'"> Save Changes </button>
                 </td>
-        </div>
+            </tr>
+        </table>
+        </form>
+      </div>
     </body>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
