@@ -126,8 +126,6 @@ public class PaymentControllerServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         ArrayList<Payment> paymentList = new ArrayList<>();
         boolean paymentsAdded = paymentList.addAll(PDAO.getPayments(userID));
-        
-        
     }
 
 }
