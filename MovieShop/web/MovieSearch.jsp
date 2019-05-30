@@ -16,7 +16,7 @@
         
     </head>
     <body> 
-         <div class="container-fluid" style="background-color: silver; height: 2500px; width: 100%;">
+         <div class="container-fluid" style="background-color: silver; height: 2810px; width: 100%;">
              
         <div class="row" style="background-color: orange;  height: auto;">
              <div class="col" style="text-align: center;">
