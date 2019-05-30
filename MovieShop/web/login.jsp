@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <script type="text/javascript" src="js/script.js"></script>
         <title>Welcome</title>
         <link rel="stylesheet" type="text/css" href="./style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
@@ -22,13 +23,14 @@
              <div class="col" style="text-align: center;">
                  <h1 class="mt-3"> Welcome to Movie Store! </h1>    
              </div>
-            
+             <body onload="startTime()">
+            <div><span class="time" id="time" ></span></div>
              <div class="w-100">   
                  <div class="col bg-dark">
                  <nav class="navbar navbar-expand-lg navbar-dark" >
-                     <li class="nav-item active">
-                     <a class="nav-link" href="./MovieSearch.jsp">Movie Store</a>
-                     </li>
+                     
+                     <a class="nav-link" href="./MovieSearch.jsp">Movies</a>
+                   
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
@@ -66,28 +68,32 @@
                   <h1 style="font-family: sans-serif; color: orange;">Sign In</h1>
                     </div>
                 
-                    <form>
-                    <div class="form-group">
-                        <label for="colFormLabel" class="col-sm-2 col-form-label">Username</label>
-                            <div class="form-group col-md-6">
-                        <input type="username" class="form-control" id="colFormLabel" >
-                            </div>
-                    </div>
-                    <div class="form-group">
-                         <label for="colFormLabel" class="col-sm-2 col-form-label">Password</label>
-                            <div class="form-group col-md-6">
-                        <input type="password" class="form-control" id="colFormLabel" >
-                            </div>
-                   
-                    </div>
+                      <form action="loginAction.jsp" method="post">
+        <table>
+            <tr>
+                <td><h5> Username:</h5></td>
+                <td> <div class="sdf">  <input type="text" name="name" placeholder ="Enter your ID or Username"> </div> </td>
+            </tr>
+            <tr>
+                <td><h5> Password:</h5></td>
+                <td><div class="cdf">  <input type="password" name ="password" placeholder ="Enter your password" minlength="2" required > </div> </td>
+
+            </tr>
+        </table>
+       
+       
+        
+            <p><input type="submit" value="Login"> </p> 
+            <p><button class="button" type="button" onclick="location.href = 'register.jsp'" > Sign up</button> 
+            </p>
+             <button type="reset" class="btn btn-warning">Clear</button>
+       
+       
+       
+        </form>
+       
                   
-                    <div class="col ml-1">
-                            <button type="submit" class="btn btn-warning">Login</button>
-                            <button type="reset" class="btn btn-warning">Clear</button>
-                    </div>
-                </form>
-              
-            </div>
+                    
        
             
         <div class="fixed-bottom" style="background-color: orange; ">

@@ -59,15 +59,16 @@
                    </div>
                </div>
             <br>
-            <form action="welcome.jsp" method="post">
+            
+            <form action="welcome.jsp" method="POST">
                 <table>
                 <tr><td>Name:</td><td><input size="25" type="text" name="name"></td></tr>
                 <tr><td>Email:</td><td><input size="25" type="text" name="email"></td></tr>
                 <tr><td>Password:</td><td><input size="25" type="password" name="password"></td></tr>
-                <tr><td>Phone Number:</td><td><input size="25" type="text" name="phone"></td></tr>
+                <tr><td>Phone Number:</td><td><input size="25" type="text" name="phonenumber"></td></tr>
                 <tr><td></td>
                     <td>
-                        <input class="button" type="submit" value="Register" onclick="location.href = 'welcome.jsp'"> 
+                        <input class="button" type="submit" value="Register"> 
                         &nbsp; 
                         <button class="button" type="button" onclick="location.href = 'index.html'" > Home Page </button>
                     </td>
@@ -86,7 +87,7 @@
                     <img  title="paypal" src="./Picture/paypal.png">
                 </div>
                  <div class="col-sm">
-                    <h3 style="font-size:20px">© MOVIE STORE 2019</h3>
+                    <h3 style="font-size:20px">? MOVIE STORE 2019</h3>
                 </div>
                 
             </div>

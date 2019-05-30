@@ -1,13 +1,9 @@
-<%-- 
-    Document   : order
-    Created on : 13/05/2019, 10:56:00 PM
-    Author     : yantoyanto
---%>
-
+<%@page import="uts.web.model.OrderLine"%>
 <%@page import="uts.web.model.Movie"%>
-<%@page import="uts.web.controller.OrderController" %>
-<%@page import="uts.web.model.Order" %>
+<%@page import="uts.web.model.Order"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="java.util.*"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page language="java" import="java.sql.*" errorPage="" %>
 <!DOCTYPE html>
@@ -63,43 +59,44 @@
         <h2>Order</h2>
         </div>
              
-             
+        
+               
+                
+        
         <div class="container" style="background-color: white; height: 600px;">
-        <form>
+        <form action="./save_order.jsp" method="post">
             <table class="table">
                 <thead>
                 <tr class="table-warning">
-        
+                    <th></th>
                     <th scope="col">Item</th>
-                    <th scope="col">Quantity</th>
                     <th scope="col">Price</th>
                     <th scope="col">Total</th>
                     <th></th>
                 </tr>
                 </thead>
+                  <tr><td>Order ID:</td><td><input size="23" type="text" name="orderID"></td></tr>
+                <tr><td>Movie ID:</td><td><input size="23" type="text" name="movieID"></td></tr>
+                <tr><td>Price</td><td><input size="23" type="number" name="price"></td></tr>
                 <tr>
-                    
-                    <td>Item 1</td>
-                    <td>1</td>
-                    <td>$ 2.50</td>
-                    <td>$ 2.50</td>
-                    <td><button type="button" class="btn btn-danger">Remove</button></td>
+                    <c:forEach var="ol" items="${listOrderLine}">
+                     <td><c:out value="${ol.orderID}" /></td>
+                     <td><c:out value="${ol.movieID}"/></td>
+                     <td><c:out value="${ol.price}"/></td>
+                    </c:forEach>          
                 </tr>
-                <tr>
-                   
-                    <td>Item 1</td>
-                    <td>1</td>
-                    <td>$ 2.50</td>
-                    <td>$ 2.50</td>
-                    <td><button type="button" class="btn btn-danger">Remove</button></td>
-                </tr>
-                
+               
             </table>
-        </form>
+        
             <div class="col" style="text-align: right;">
-                <a class="btn btn-warning" href="./shipment.jsp">Shipment</a>
+                <input class="btn btn-warning" value="Save"type="submit" onclick="location.href = 'order_save.jsp'"/>
+                        &nbsp;&nbsp;&nbsp;
+                <a class="btn btn-warning" href="./shipment.jsp">Proceed to Shipment</a>
+                
             </div>
-        </div>   
+           </form>             
+        </div>  
+                    
              
              
          <div class="fixed-bottom" style="background-color: orange; ">

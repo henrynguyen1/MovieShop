@@ -4,6 +4,10 @@
     Author     : francobuena
 --%>
 
+<%@page import="uts.web.model.dao.DBManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="uts.web.model.dao.DBConnector"%>
+<%@page import="uts.web.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -52,7 +56,9 @@
                  </div>
              </div>
         </div>
-            
+        <%
+        User user = (User) session.getAttribute("newuser");
+        %>
         <div class="container mt-lg-4 mt-sm-2 pb-4" style="width:100%; height:650px; background-color: lightgray;">
                <div class="row" style="background-color: lightgray;">
                    <div class="col mt-5" style="text-align: left;">
@@ -60,6 +66,14 @@
                    </div>
                </div>    
             
+        <% 
+                DBConnector connector = new DBConnector();
+                Connection conn = connector.openConnection();
+                DBManager db = new DBManager(conn);
+                session.setAttribute("manager", db);
+                DBManager manager = (DBManager)session.getAttribute("manager"); 
+                manager.deleteUser(user.getID());
+        %>
             
         <div class="fixed-bottom" style="background-color: orange; ">
         <div class ="row">

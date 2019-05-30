@@ -3,8 +3,11 @@
     Created on : 13/05/2019, 11:53:40 AM
     Author     : francobuena
 --%>
-<%@page import="uts.web.model.User"%>
+<%@page import="uts.web.model.dao.*"%>
+<%@page import="uts.web.controller.*"%>
+<%@page import="java.sql.*"%>
 <%@page import="java.util.Random"%>
+<%@page contentType="text/html" import="java.util.*" import="uts.web.model.*" pageEncoding="UTF-8"%>
 <html>
     <head>
         <title>Welcome Page</title>
@@ -56,7 +59,7 @@
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        String phone = request.getParameter("phone");
+        String phonenumber = request.getParameter("phonenumber");
         int key = (new Random()).nextInt(999999);
         String ID = "" + key;
     %>
@@ -68,14 +71,20 @@
                          <p>ID: <%= ID%> </p>
                          <p>Name: <%= name%></p> 
                          <p>Email: <%= email%></p>
-                         <p>Phone: <%= phone%></p> 
+                         <p>Phone: <%= phonenumber%></p> 
                          <p>Password: <%= password%></p>
                    </div>
                </div>
-                                 
-          <%
-          User user = new User(email,name,password,phone);
-          session.setAttribute("user", user);
+                                  
+          <%             
+          DBConnector connector = new DBConnector();
+          Connection conn = connector.openConnection();
+          DBManager db = new DBManager(conn);
+          session.setAttribute("manager", db);
+          DBManager manager = (DBManager)session.getAttribute("manager");
+          User user = new User(ID,email,name,password,phonenumber);
+          manager.addUser(ID, email, name, password, phonenumber);
+          session.setAttribute("newuser", user);
           %>                     
         
             <button class="button" type="submit" onclick="location.href = 'edit_details.jsp'"> Edit Details </button>
@@ -94,7 +103,7 @@
                     <img  title="paypal" src="./Picture/paypal.png">
                 </div>
                  <div class="col-sm">
-                    <h3 style="font-size:20px">© MOVIE STORE 2019</h3>
+                    <h3 style="font-size:20px">Â© MOVIE STORE 2019</h3>
                 </div>
                 
             </div>
@@ -107,4 +116,3 @@
   
     </body>
 </html>
-

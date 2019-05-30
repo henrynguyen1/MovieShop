@@ -67,7 +67,8 @@ public class OrderControllerServlet extends HttpServlet{
      
       private void listOrder(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        List<Order> listOrder = orderDAO.listAllOrder();
+           int orderID = Integer.parseInt(request.getParameter("orderID"));
+        List<Order> listOrder = orderDAO.listAllOrder(orderID);
         request.setAttribute("listOrder", listOrder);
         RequestDispatcher dispatcher = request.getRequestDispatcher("order.jsp");
         dispatcher.forward(request, response);
@@ -76,34 +77,31 @@ public class OrderControllerServlet extends HttpServlet{
        private void addOrder(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ParseException {
          
-        int userID = Integer.parseInt(request.getParameter("userID"));
-        int movieID = Integer.parseInt(request.getParameter("movieID"));
-        String trackingNo = request.getParameter("trackingNo");
+        int orderID = Integer.parseInt(request.getParameter("orderID"));
+        String userID = request.getParameter("userID");
         String status = request.getParameter("status");
         
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/YYYY");
         Date date = format.parse(request.getParameter("date"));
         
-        double price = Double.parseDouble(request.getParameter("price"));
+        double total = Double.parseDouble(request.getParameter("total"));
  
-        Order order = new Order(userID, movieID, trackingNo, status, date, price);
+        Order order = new Order(orderID, userID, status, date, total);
         orderDAO.addOrder(order);
         response.sendRedirect("listOrder");
     }
        
     private void updateOrder(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ParseException {
-         int userID = Integer.parseInt(request.getParameter("userID"));
-        int movieID = Integer.parseInt(request.getParameter("movieID"));
-        String trackingNo = request.getParameter("trackingNo");
+        int orderID = Integer.parseInt(request.getParameter("orderID"));
+         String userID = request.getParameter("userID");
         String status = request.getParameter("status");
-        
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/YYYY");
         Date date = format.parse(request.getParameter("date"));
         
-        double price = Double.parseDouble(request.getParameter("price"));
+        double total = Double.parseDouble(request.getParameter("total"));
  
-        Order order = new Order(userID, movieID, trackingNo, status, date, price);
+        Order order = new Order(orderID, userID, status, date, total);
  
      
         orderDAO.updateOrder(order);

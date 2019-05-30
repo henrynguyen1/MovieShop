@@ -16,77 +16,61 @@ import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.Date;
+import uts.web.model.dao.DBConnector;
 /**
  *
  * @author yantoyanto
  */
 public class OrderDAO {
-    private String jdbcURL;
-    private String jdbcUsername;
-    private String jdbcPassword;
-    private Connection jdbcConnection;
+    private final DBConnector DBCONN;
+    private final String INSERT_QUERY;
+    private final String UPDATE_QUERY;
+    private final String USER_SELECT;
+    private final String ORDER_SELECT;
+
      
     
-    public OrderDAO(String jdbcURL, String jdbcUsername, String jdbcPassword) {
-        this.jdbcURL = jdbcURL;
-        this.jdbcUsername = jdbcUsername;
-        this.jdbcPassword = jdbcPassword;
-    }
-     
-          
-    protected void connect() throws SQLException {
-        if (jdbcConnection == null || jdbcConnection.isClosed()) {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException e) {
-                throw new SQLException(e);
-            }
-            jdbcConnection = DriverManager.getConnection(
-                                        jdbcURL, jdbcUsername, jdbcPassword);
-        }
-    }
-     
-     protected void disconnect() throws SQLException {
-        if (jdbcConnection != null && !jdbcConnection.isClosed()) {
-            jdbcConnection.close();
-        }
+    public OrderDAO() throws ClassNotFoundException, SQLException {
+        INSERT_QUERY = "INSERT INTO ORDER_T(userID, status, date, total) VALUES (?,?,?,?)";
+        UPDATE_QUERY = "UPDATE ORDER_T SET status = ? where orderID = ?";
+        USER_SELECT = "SELECT * FROM ORDER_T where userID = ?";
+        ORDER_SELECT = "SELECT * FROM ORDER_T where orderID = ?";
+        DBCONN = new DBConnector();
     }
      
      public boolean addOrder(Order order) throws SQLException{
-         String sql = "INSERT INTO order(userID, movieID, trackingNo, status, date, price) VALUES (?,?,?,?,?,?)";
-         connect();
+         Connection conn = DBCONN.openConnection();
+         PreparedStatement ps = conn.prepareStatement(INSERT_QUERY);
          
-         PreparedStatement statement = jdbcConnection.prepareStatement(sql);
-         statement.setInt(1, order.getUserID());
-         statement.setInt(2, order.getOrderID());
-         statement.setString(3, order.getTrackingNo());
-         statement.setString(4, order.getStatus());
-         statement.setObject(5, order.getDate());
-         statement.setDouble(6, order.getPrice());
+  
+         ps.setString(1, order.getUserID());
+
+         ps.setString(2, order.getStatus());
+         ps.setObject(3, order.getDate());
+         ps.setDouble(4, order.getTotal());
          
-         boolean rowInserted = statement.executeUpdate() > 0;
-         statement.close();
-         disconnect();
+         boolean rowInserted = ps.executeUpdate() > 0;
+         ps.close();
+         conn.close();
          return rowInserted;
      }
       
      public boolean updateOrder(Order order) throws SQLException{
-         String sql = "UPDATE order SET status = ?";
+         Connection conn = DBCONN.openConnection();
+         PreparedStatement ps = conn.prepareStatement(UPDATE_QUERY);
          
-         connect();
+        
+         ps.setString(2, order.getStatus());
          
-         PreparedStatement statement = jdbcConnection.prepareStatement(sql);
-         statement.setString(4, order.getStatus());
-         
-         boolean rowUpdated = statement.executeUpdate() > 0;
-         statement.close();
-         disconnect();
+         boolean rowUpdated = ps.executeUpdate() > 0;
+         ps.close();
+         conn.close();
          return rowUpdated; 
      }
     
      /*
     public boolean deleteOrder(Order order) throws SQLException {
-        String sql = "DELETE FROM order where orderid = ?";
+        String sql = "DELETE FROM ORDER_T where orderid = ?";
          
         connect();
          
@@ -99,60 +83,57 @@ public class OrderDAO {
         return rowDeleted;     
     }*/
     
-    public List<Order> listAllOrder() throws SQLException {
+    public List<Order> listAllOrder(int orderID) throws SQLException {
         List<Order> listOrder = new ArrayList<>();
          
-        String sql = "SELECT * FROM order";
+         Connection conn = DBCONN.openConnection();
+         PreparedStatement ps = conn.prepareStatement(USER_SELECT);
          
-        connect();
-         
-        Statement statement = jdbcConnection.createStatement();
-        ResultSet resultSet = statement.executeQuery(sql);
+        ps.setInt(1, orderID);
+        ResultSet resultSet = ps.executeQuery();
          
         while (resultSet.next()) {
-            int userID = resultSet.getInt("userID");
-            int movieID = resultSet.getInt("movieID");
-            String trackingNo = resultSet.getString("trackingNo");
+            orderID = resultSet.getInt("orderID");
+            String userID = resultSet.getString("userID");
             String status = resultSet.getString("status");
             Date date = resultSet.getDate("date");
-            double price = resultSet.getDouble("price");
+            double total = resultSet.getDouble("total");
              
-            Order order = new Order(userID, movieID, trackingNo, status, date,  price);
+            Order order = new Order(orderID, userID, status, date, total);
             listOrder.add(order);
         }
          
         resultSet.close();
-        statement.close();
+        ps.close();
          
-        disconnect();
+        conn.close();
          
         return listOrder;
     }
     
-    public Order getOrder(int id) throws SQLException {
+    public Order getOrder(int orderID) throws SQLException {
         Order order = null;
-        String sql = "SELECT * FROM order WHERE orderID = ?";
+        Connection conn = DBCONN.openConnection();
+        PreparedStatement ps = conn.prepareStatement(ORDER_SELECT);
+    
          
-        connect();
+        
+        ps.setInt(1, orderID);
          
-        PreparedStatement statement = jdbcConnection.prepareStatement(sql);
-        statement.setInt(1, id);
-         
-        ResultSet resultSet = statement.executeQuery();
+        ResultSet resultSet = ps.executeQuery();
          
         if (resultSet.next()) {
-            int userID = resultSet.getInt("userID");
-            int movieID = resultSet.getInt("movieID");
-            String trackingNo = resultSet.getString("trackingNo");
+            orderID = resultSet.getInt("orderID");
+            String userID = resultSet.getString("userID");
             String status = resultSet.getString("status");
             Date date = resultSet.getDate("date");
-            double price = resultSet.getDouble("price");
+            double total = resultSet.getDouble("total");
              
-            order = new Order(userID, movieID, trackingNo, status, date,  price);
+            order = new Order(orderID, userID, status, date, total);
         }
          
         resultSet.close();
-        statement.close();
+        ps.close();
          
         return order;
     }

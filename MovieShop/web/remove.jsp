@@ -20,7 +20,7 @@
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String phonenumber = request.getParameter("phone");
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("newuser");
     %>
     
     <body>
@@ -64,16 +64,16 @@
             
         <div class="container mt-lg-4 mt-sm-2 pb-4" style="width:100%; height:650px; background-color: lightgray;">
                <div class="row" style="background-color: lightgray;">
-                   <div class="col mt-5" style="text-align: left;">
+                   <div class="col mt-5" style="text-align: left;">                  
                         <h2> Are you sure you want to delete your account? </h2>
                         <p>Name: <%= user.getName()%></p> 
                         <p>Email: <%= user.getEmail()%></p>
                         <p>Phone: <%= user.getPhoneNumber()%></p> 
                    </div>
                </div>  
-            <button class="button" type="submit" onclick="location.href = 'confirm_delete.jsp'"> Confirm </button>
-            &nbsp; 
-            <button class="button" type="button" onclick="location.href = 'welcome.jsp'" > Cancel </button>
+                   <button class="button" type="submit" onclick="location.href = 'confirm_delete.jsp'"> Confirm </button>
+                        &nbsp; 
+                        <button class="button" type="button" onclick="location.href = 'welcome.jsp'" > Cancel </button>
             
             
         <div class="fixed-bottom" style="background-color: orange; ">

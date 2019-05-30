@@ -5,10 +5,8 @@
  */
 package uts.web.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.sql.*;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
@@ -16,6 +14,7 @@ import java.util.logging.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import uts.web.model.*;
+import uts.web.model.dao.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -43,8 +42,14 @@ public class ShipmentControllerServlet extends HttpServlet {
      */
       @Override //Create and instance of DBConnector for the deployment session
     public void init() {
-       db = new DBConnector();
-       shipmentDAO = new ShipmentDAO();
+        try {
+            db = new DBConnector();
+            shipmentDAO = new ShipmentDAO();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ShipmentControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ShipmentControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
      /**
@@ -77,7 +82,7 @@ public class ShipmentControllerServlet extends HttpServlet {
                 deleteShipment(request, response);
                 break;
             default:
-                listShipments(request, response);
+                listShipment(request, response);
                 break;
             }
         } catch (SQLException ex) {
@@ -90,35 +95,40 @@ public class ShipmentControllerServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
        
         String email = request.getParameter("email");   
-        String address = request.getParameter("address");
-        String name = request.getParameter("name");
-        String type = request.getParameter("type");
+        String addressline = request.getParameter("Address Line");
+        String suburb = request.getParameter("Suburb");
+        String state = request.getParameter("State");
+        String postcode = request.getParameter("Postcode");
+        String type = request.getParameter("Type");
         
-        
-        Shipment newShipment  = new Shipment(email, address,  name, type);
+        String address = addressline + ", " + suburb + ", " + state + ", "+ postcode;
+        Shipment newShipment  = new Shipment(email, address, type);
         ShipmentDAO dao = new ShipmentDAO();
         dao.addShipment(newShipment);
         
         
-        response.sendRedirect("list");
+        response.sendRedirect("ShippingList");
         
        
     }
     
     private void modifyShipment (HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
+       
         String email = request.getParameter("email");   
-        String address = request.getParameter("address");
-        String name = request.getParameter("name");
+        String addressline = request.getParameter("Address Line");
+        String suburb = request.getParameter("Suburb");
+        String state = request.getParameter("State");
+        String postcode = request.getParameter("Postcode");
         String type = request.getParameter("type");
         
-        
-        Shipment newShipment  = new Shipment(email, address,  name, type);
+        String address = addressline + ", " + suburb + ", " + state + ", "+ postcode;
+        Shipment newShipment  = new Shipment(email, address, type);
         ShipmentDAO dao = new ShipmentDAO();
         dao.updateShipment(newShipment);
         
         
-        response.sendRedirect("list");
+        response.sendRedirect("ShippingList");
     }
    
     private void deleteShipment (HttpServletRequest request, HttpServletResponse response)
@@ -129,9 +139,9 @@ public class ShipmentControllerServlet extends HttpServlet {
         Shipment shipment = new Shipment(shipID);
         ShipmentDAO dao = new ShipmentDAO();
         dao.deleteShipment(shipment);
-        response.sendRedirect("list");}
+        response.sendRedirect("ShippingList");}
     
-    private void listShipments (HttpServletRequest request, HttpServletResponse response)
+    private void listShipment (HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         List <Shipment> listShipment = new ArrayList<>();
         request.setAttribute("listShipment", listShipment);

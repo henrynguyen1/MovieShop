@@ -7,9 +7,12 @@ package uts.web.controller;
 
 import java.sql.*;
 import uts.web.model.*;
+
 import java.time.*;
 import java.util.*;
-import uts.isd.model.dao.DBConnector;
+import uts.web.controller.*;
+import uts.web.model.dao.DBConnector;
+
 
 
 
@@ -34,7 +37,7 @@ public class ShipmentDAO {
     
     
     public ShipmentDAO(){
-        INSERT_QUERY = "INSERT INTO shipments (email, address, name, type)"
+        INSERT_QUERY = "INSERT INTO shipments (email, address, type)"
                 + " VALUES (?, ?, ?, ?)";
         UPDATE_QUERY = "UPDATE shipments SET email = ?, address = ?, name = ?, type = ?"
                 + " WHERE ShipmentID = ?";
@@ -59,7 +62,6 @@ public int addShipment(Shipment shipment) throws SQLException{
     Connection connect = DBCONN.openConnection();  
     PreparedStatement pstmt = conn.prepareStatement(INSERT_QUERY); {
     pstmt.setString(1, shipment.getEmail());
-    pstmt.setString(2, shipment.getName());
     pstmt.setString(3, shipment.getAddress());
     pstmt.setInt(4, shipment.getUserID());
     pstmt.setString(5, shipment.getType());
@@ -77,15 +79,9 @@ public int updateShipment(Shipment shipment) throws SQLException {
     PreparedStatement pstmt = conn.prepareStatement(UPDATE_QUERY);
     int rowUpdated = 0;
         
-    pstmt.setInt(1, shipment.getShipID());
     pstmt.setString(2, shipment.getEmail());
-    pstmt.setString(2, shipment.getName());
     pstmt.setString(3, shipment.getAddress());
-    pstmt.setString(4, shipment.getTrackingNo());
-    pstmt.setInt(5, shipment.getUserID());
     pstmt.setString(6, shipment.getType());
-    pstmt.setObject(7, shipment.getDate());
-    pstmt.setString(8, shipment.getStatus());
     
     if (shipment.getStatus()=="SUBMITTED"){
     rowUpdated = pstmt.executeUpdate();
@@ -119,11 +115,10 @@ public List<Shipment> listShipments()throws SQLException{
         ResultSet rst = pstmt.executeQuery();
          
         while (rst.next()) {
-            int shipID = rst.getInt("book_id");
-            String email = rst.getString("title");
+            int shipID = rst.getInt("shipID");
+            String email = rst.getString("email");
             String address = rst.getString("address");
             String trackingNo = rst.getString("trackingNo");
-            String name = rst.getString("name");
             int userID = rst.getInt("userID");
             String type = rst.getString("type");
             LocalDate date = rst.getObject("date", LocalDate.class);
