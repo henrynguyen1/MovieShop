@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Action Movies</title>
+        <title>Comedy Movies</title>
         <link rel="stylesheet" type="text/css" href="./style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,7 +20,7 @@
              
         <div class="row" style="background-color: orange;  height: auto;">
              <div class="col" style="text-align: center;">
-                 <h1 class="mt-3">Action Movies!</h1>
+                 <h1 class="mt-3">Comedy Movies!</h1>
                   <a class="nav-link" href="./login.jsp">SIGN IN</a>
                   
                  
@@ -40,7 +40,7 @@
                         
                         
                         
-                         <a class="nav-link" href="./Comedy.jsp">Comedy</a>
+                        <a class="nav-link" href="./Comedy.jsp">Comedy</a>
                        
                        
                         <a class="nav-link" href="./Drama.jsp">Drama</a>
@@ -62,7 +62,7 @@
                         
                       
                       <li class="nav-item active">
-                        <a class="nav-link" href="./Action.jsp"></a>
+                        <a class="nav-link" href="./Comedy.jsp"></a>
                         </li>
                       
                            
@@ -74,13 +74,11 @@
          </div>
             
              </div>
-             <img src="Ave.jpg" alt="Avengers" style="width:150px;height:200px;"> 
-             
-             <a class="nav-link" href="">The Avengers</a>
-             <a class="nav-link" href="">Buy</a>
-                        
-             <img src="gD.jpg" alt="Godzilla" style="width:150px;height:200px;">
-             <a class="nav-link" href="">Godzilla</a> 
+             <img src="./img/Mask.jpg" alt="The Mask" style="width:150px;height:200px;">
+             <a class="nav-link" href="">The Mask</a>
+              <a class="nav-link" href="">Buy</a>
+             <img src="./img/DD.jpg" alt="Dumb and Dumberer" style="width:150px;height:200px;">
+             <a class="nav-link" href="">Dumb and Dumberer</a> 
               <a class="nav-link" href="">Buy</a> 
               
          </div>
