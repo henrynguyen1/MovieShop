@@ -20,7 +20,7 @@
             int orderID = Integer.parseInt(request.getParameter("orderID"));
             String movieID = request.getParameter("movieID");
             double price = Double.parseDouble(request.getParameter("price"));
-            OrderLine orderLines = manager.findOrderLine(orderID);
+            OrderLine orderLines = manager.findOrderLine(orderID, movieID);
             
             OrderLine orderLine = new OrderLine(orderID,movieID,price);
             if(orderLines != null){
