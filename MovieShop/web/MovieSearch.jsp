@@ -71,29 +71,36 @@
              
              <a class="nav-link" href="">The Avengers</a>
              <a class="nav-link" href="">Buy</a>
-             
+             <a class="nav-link" href="">Edit</a>
                         
              <img src="./img/gD.jpg" alt="Godzilla" style="width:150px;height:200px;">
              <a class="nav-link" href="">Godzilla</a> 
               <a class="nav-link" href="">Buy</a>
+              <a class="nav-link" href="">Edit</a>
              <img src="./img/Mask.jpg" alt="The Mask" style="width:150px;height:200px;">
              <a class="nav-link" href="">The Mask</a>
               <a class="nav-link" href="">Buy</a>
+              <a class="nav-link" href="">Edit</a>
              <img src="./img/DD.jpg" alt="Dumb and Dumberer" style="width:150px;height:200px;">
              <a class="nav-link" href="">Dumb and Dumberer</a> 
               <a class="nav-link" href="">Buy</a>
+              <a class="nav-link" href="">Edit</a>
              <img src="./img/Rev.jpg" alt="The Revenant" style=width:150px;height:200px;"> 
              <a class="nav-link" href="">The Revenant</a>
               <a class="nav-link" href="">Buy</a>
+              <a class="nav-link" href="">Edit</a>
              <img src="./img/Help.jpg" alt="The Help" style=width:150px;height:200px;">
              <a class="nav-link" href="">The Help</a>
               <a class="nav-link" href="">Buy</a>
+              <a class="nav-link" href="">Edit</a>
              <img src="./img/Ins.jpg" alt="Insidious" style=width:150px;height:200px;">
              <a class="nav-link" href="">Insidious</a>
               <a class="nav-link" href="">Buy</a>
+              <a class="nav-link" href="">Edit</a>
              <img src="./img/Omen.jpg" alt="The Omen" style=width:150px;height:200px;"> 
              <a class="nav-link" href="">The Omen</a> 
               <a class="nav-link" href="">Buy</a>
+              <a class="nav-link" href="">Edit</a>
          </div>
         
         
