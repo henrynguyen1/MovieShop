@@ -37,7 +37,7 @@ public class ShipmentDAO {
     
     
     public ShipmentDAO(){
-        INSERT_QUERY = "INSERT INTO shipments (email, address, name, type)"
+        INSERT_QUERY = "INSERT INTO shipments (email, address, type)"
                 + " VALUES (?, ?, ?, ?)";
         UPDATE_QUERY = "UPDATE shipments SET email = ?, address = ?, name = ?, type = ?"
                 + " WHERE ShipmentID = ?";

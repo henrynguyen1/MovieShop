@@ -4,10 +4,10 @@
     Author     : George
 --%>
 
-<%@page import="uts.model1.Login"%>
-<%@page import="uts.dao.*"%>
-<%@page import="uts.model1.*"%>
-<%@page import="uts.controller.*"%>
+<%@page import="uts.web.model.*"%>
+<%@page import="uts.web.controller.*"%>
+
+<%@page import="uts.web.model.dao.*"%>
 <%@page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uts.model1.*" import="java.sql.*"%>

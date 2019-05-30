@@ -27,13 +27,13 @@
     </head>
     
     <%
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String phonenumber = request.getParameter("phone");
-        User user = (User) session.getAttribute("user");
-        Shipment shipment = (Shipment) session.getAttribute("shipment");
-        Order order = (Order) session.getAttribute("order");
+//        String name = request.getParameter("name");
+//        String email = request.getParameter("email");
+//        String password = request.getParameter("password");
+//        String phonenumber = request.getParameter("phone");
+//        User user = (User) session.getAttribute("user");
+//        Shipment shipment = (Shipment) session.getAttribute("shipment");
+//        Order order = (Order) session.getAttribute("order");
     %>
     <body>
          <div class="container-fluid" style="background-color: silver; height: 900px; width: 100%;">
@@ -91,12 +91,13 @@
                 <thead>
             <tr class="table-warning">
                 
-                <th scope = "col"> ID</th>
-                <th scope = "col" >Order Date</th>
-                <th scope = "col" >Order Details</th>
-                <th scope = "col">Price</th>
+                <th scope = "col">ID</th>
+                <th scope = "col">Order Date</th>
+                <th scope = "col">Email</th>
+                <th scope = "col">Address</th>
                 <th scope = "col">Tracking Number</th>
-                <th scope = "col">Status</th>
+                <th scope = "col">Shipping Type</th>
+                <th scope = "col">Shipping Status</th>
             </tr>
                 </thead>
             <c:forEach var="shipment" items="${listShipment}">
@@ -105,15 +106,13 @@
                     <td><c:out value="${shipment.date}" /></td>
                     <td><c:out value="${shipment.email}" /></td>
                     <td><c:out value="${shipment.address}" /></td>
-                    <td><c:out value="${order.movieID}" /></td>
-                    <td><c:out value="${order.total}" /></td>
                     <td><c:out value="${shipment.trackingNo}" /></td>
                     <td><c:out value="${shipment.type}" /></td>
                     <td><c:out value="${shipment.status}" /></td>
                     <td>
-                        <a href = "/modify?id=<c:out value= <%shipment.getShipID();%> /> ">Edit</a>
+                        <a class="nav-link" href="./shipment_edit.jsp"> Edit</a>
                         &nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="/delete?id=<c:out value= <%shipment.getShipID();%> />">Delete</a>                     
+                        <a href="/delete?id=<c:out value= '${shipment.shipID}'/>">Delete</a>                     
                     </td>
                 </tr>
             </c:forEach>

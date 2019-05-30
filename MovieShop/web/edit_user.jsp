@@ -1,7 +1,7 @@
 
 <%@page import="sun.security.jgss.GSSUtil.login(GSSCaller, Oid)"%>
-<%@page import="uts.dao.DBManager"%>
-<%@page import="uts.model1.Login"%>
+<%@page import="uts.web.controller.*"%>
+<%@page import="uts.web.model.*"%>
 <%@page import="uts.dao.DBConnector"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="uts.controller.*"%>

@@ -2,9 +2,13 @@
     Document   : shipment_edit
     Created on : 27/05/2019, 5:50:18 PM
     Author     : HenryNguyen
---%><%@page import="java.util.Random"%>
+--%><%@page import="java.sql.Connection"%>
+<%@page import="java.util.Random"%>
 <%@page import="uts.web.model.*"%>
---%><%@page import="uts.web.controller.*"%>
+<%@page import="uts.web.controller.*"%>
+
+<%@page import="uts.web.model.dao.*"%>
+<%@page import="java.util.*"%>
 
 
 
@@ -13,17 +17,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <% 
-        String name = request.getParameter("newname");
-        String email = request.getParameter("newemail");
-        String address = request.getParameter("newaddress");
-        String type = request.getParameter("newtype");
+        <%
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        String type = request.getParameter("type");
         
-        Shipment shipment = (Shipment) session.getAttribute("shipment");
-        User user = (User) session.getAttribute("user");
-      
+        Shipment shipment = (Shipment) session.getAttribute("newshipment");
         
-         %>
+        
+        
+        %>
+       
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
 
@@ -75,16 +79,16 @@
             
             
           <div align="center">
-          <form action="update" method="post">
+          <form action="shipmentEditAction.jsp" method="post">
           <table border="1" cellpadding="5">
         
             <h1>Edit Shipment Details</h1>
-            <input type="hidden" name="id" value="<c:out value='${shipment.shipID}' />" />
+            <input type="hidden" name="updated" value="updated" />" 
             <tr>
                 <th>Email: </th>
                 <td>
                     <input type="text" name="newemail" size="45"
-                     value = "<%shipment.getEmail();%>"
+                     value = "email"
                     />
                 </td>
             </tr>
@@ -92,29 +96,31 @@
                 <th>Address: </th>
                 <td>
                     <input type="text" name="newddress" size="10"
-                     value = "<%shipment.getAddress();%>">
+                     value = "address">
                 </td>
                 </th>
             </tr>
                 <th>Shipment Type</th>
                 <td>
                     <select name="newtype">
-                          <option value="<%shipment.getType();%>">Standard</option>
-                          <option value="<%shipment.getType();%>">Express</option>
+                          <option value="Standard">Standard</option>
+                          <option value="Express"> Express</option>
                     </select>
                  </td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <button class="button" type="submit" onclick="location.href = 'welcome.jsp'"> Save Changes </button>
+                    <button class="button" type="submit" onclick="location.href = 'shipmentEditAction.jsp'"> Save Changes </button>
+                    <button class="button" type="submit" onclick="location.href = 'main.jsp'"> Return to Main </button>
                 </td>
+                 
             </tr>
         </table>
         </form>
       </div>
     </body>
     
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
       

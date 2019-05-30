@@ -4,6 +4,10 @@
     Author     : francobuena
 --%>
 
+<%@page import="uts.web.model.User"%>
+<%@page import="uts.web.model.dao.DBManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="uts.web.model.dao.DBConnector"%>
 <%@page import="java.util.Random"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -61,41 +65,34 @@
         String newphone = request.getParameter("newphone");
         int key = (new Random()).nextInt(999999);
         String ID = "" + key;
+        User user = (User) session.getAttribute("newuser");
         %>
             
         <div class="container mt-lg-4 mt-sm-2 pb-4" style="width:100%; height:650px; background-color: bisque;">
                <div class="row" style="background-color: bisque;">
                    <div class="col mt-5" style="text-align: left;">
                          <h2> Your new details are now saved. </h2>
-                         <table border="10" width="5" cellspacing="10">
-                             <thead>
-                                 <tr>
-                                     <th> User Info </th>
-                                     <th> Data </th>
-                                 </tr>
-                             </thead>
-                             <tbody>
-                                 <tr>
-                                     <td> Name </td>
-                                     <td> <%=newname%> </td>
-                                 </tr>
-                                 <tr>
-                                     <td> Email </td>
-                                     <td> <%=newemail%> </td>
-                                 </tr>
-                                 <tr>
-                                     <td> Phone Number</td>
-                                     <td> <%=newphone%> </td>
-                                 </tr>
-                                 <tr>
-                                     <td> ID </td>
-                                     <td> <%=ID%> </td>
-                                 </tr>
-                             </tbody>
-                         </table>
-
+                         <p>ID: <%= user.getID()%> </p>
+                         <p>Name: <%= newname%> </p>
+                         <p>Email <%= newemail %> </p>
+                         <p>Phone: <%= newphone %> </p>
                    </div>
                </div>
+                                 
+            <% 
+                DBConnector connector = new DBConnector();
+                Connection conn = connector.openConnection();
+                DBManager db = new DBManager(conn);
+                session.setAttribute("manager", db);
+                DBManager manager = (DBManager)session.getAttribute("manager"); 
+
+                if (request.getParameter("updated") != null) {
+                    manager.updateUser(user.getID(), request.getParameter("newemail"), request.getParameter("newname"), request.getParameter("password"), request.getParameter("newphone"));
+                }
+                    if (user != null) {
+                        session.setAttribute("user", user);
+                    }
+            %>                     
            
             <button class="button" type="submit" onclick="location.href = 'welcome.jsp'"> Home </button>
             

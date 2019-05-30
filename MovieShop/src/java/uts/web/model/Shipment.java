@@ -44,7 +44,7 @@ public class Shipment implements Serializable{
 
 
     public Shipment(String email, String address, String type ) {
-        this.shipID = shipID;
+        
         this.email = email;
         this.address = address;
         this.type = type;
