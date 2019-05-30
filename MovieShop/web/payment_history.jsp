@@ -77,7 +77,7 @@
                         <th>Type</th>
                         <th>Status</th>
                     </tr>
-                    <c:forEach var="payment" items="${listPayments}">
+                    <c:forEach var="payment" items="${paymentList}">
                         <tr>
                             <td><c:out value="${payment.getPaymentID()}" /></td>
                             <td><c:out value="${payment.getOrderID()}" /></td>

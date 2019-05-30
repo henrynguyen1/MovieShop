@@ -62,16 +62,15 @@
                    </div>
                </div>
             <br>
-            <form action="confirm_payment.jsp" method="post">
+            <form action="insert" method="post">
                 <table>
                 <tr>
                     <td>
                         Payment Type:
                     </td>
                     <td><select name="paymentType">
-                            <option value="WALLET">WALLET</option>
-                            <option value="CREDIT_CARD">CREDIT CARD</option>
-                            <option value="BANK_TRANSFER">BANK TTRANSFER</option>
+                            <option value="VISA">VISA</option>
+                            <option value="MASTER_CARD">MASTER_CARD</option>
                             <option value="PAYPAL">PAYPAL</option>
                         </select>
                     </td>
