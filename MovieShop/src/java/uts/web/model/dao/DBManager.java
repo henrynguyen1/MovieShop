@@ -7,8 +7,12 @@ package uts.web.model.dao;
 
 import uts.web.model.dao.DBConnector;
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import uts.web.model.Order;
 import uts.web.model.OrderLine;
+import uts.web.model.Shipment;
 import uts.web.model.User;
 
 /**
@@ -217,6 +221,85 @@ public class DBManager {
          System.out.println("record not deleted");
          }
     }
+         
+         public int addShipment(Shipment shipment) throws SQLException{
+    String query =  "INSERT INTO shipments (email, address, type)"
+                + " VALUES (?, ?, ?, ?)";
+    PreparedStatement pstmt = CONN.prepareStatement(query); {
+    pstmt.setString(1, shipment.getEmail());
+    pstmt.setString(3, shipment.getAddress());
+    pstmt.setInt(4, shipment.getUserID());
+    pstmt.setString(5, shipment.getType());
+    pstmt.setString(6, shipment.getStatus());
+    }
+        int rowInserted = pstmt.executeUpdate();
+        pstmt.close();
+        
+        return rowInserted;
+
+}
+
+public int updateShipment(Shipment shipment) throws SQLException {
+    String query = "UPDATE shipments SET email = ?, address = ?, name = ?, type = ?"
+                + " WHERE ShipmentID = ?";   
+    PreparedStatement pstmt = CONN.prepareStatement(query);
+    int rowUpdated = 0;
+        
+    pstmt.setString(2, shipment.getEmail());
+    pstmt.setString(3, shipment.getAddress());
+    pstmt.setString(6, shipment.getType());
+    
+    if (shipment.getStatus()=="SUBMITTED"){
+    rowUpdated = pstmt.executeUpdate();
+    }
+    pstmt.close();
+    
+    return rowUpdated; 
+
+}
+public int deleteShipment(Shipment shipment) throws SQLException {
+    String query =  "DELETE FROM shipment WHERE ShipmentID = ?";   
+    PreparedStatement pstmt = CONN.prepareStatement(query);
+    int rowDeleted  = 0;
+    pstmt.setInt(1,shipment.getShipID());
+    
+    if (shipment.getStatus()=="COMPLETED"){
+       rowDeleted = pstmt.executeUpdate();
+    }
+    pstmt.close();
+    return rowDeleted;
+}
+
+
+
+
+public List<Shipment> listShipments()throws SQLException{
+        List<Shipment> listShipment = new ArrayList<>();
+        String query = "SELECT * FROM shipment";
+        PreparedStatement pstmt = CONN.prepareStatement(query);
+        ResultSet rst = pstmt.executeQuery();
+         
+        while (rst.next()) {
+            int shipID = rst.getInt("shipID");
+            String email = rst.getString("email");
+            String address = rst.getString("address");
+            String trackingNo = rst.getString("trackingNo");
+            int userID = rst.getInt("userID");
+            String type = rst.getString("type");
+            LocalDate date = rst.getObject("date", LocalDate.class);
+            String status = rst.getString("status");;
+             
+            Shipment shipment = new Shipment(shipID);
+                  
+            listShipment.add(shipment);
+        }
+         
+        rst.close();
+        pstmt.close();
+         
+        return listShipment;
+    }
+        
       
      
 }
