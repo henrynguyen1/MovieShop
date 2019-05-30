@@ -113,7 +113,7 @@ public class MovieControllerServlet extends HttpServlet {
        
         String movieID = request.getParameter("movieID");
         
-        Movie newMovie = new Movie(movieID);
+        Movie newMovie = new Movie(movieID, title, genre, duration, price);
         MovieDAO dao = new MovieDAO();
         dao.deleteMovie(newMovie);
         response.sendRedirect("list");}

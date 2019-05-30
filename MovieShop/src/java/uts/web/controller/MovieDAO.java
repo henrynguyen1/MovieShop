@@ -102,13 +102,13 @@ public class MovieDAO {
         ResultSet rst = pstmt.executeQuery();
          
         while (rst.next()) {
-            int movieID = rst.getInt("movieID");
+            String movieID = rst.getString("movieID");
             String title = rst.getString("title");
             String genre = rst.getString("genre");
             String duration = rst.getString("duration");
             double price = rst.getDouble("price"); 
              
-            Movie movie = new Movie();
+           Movie movie = new Movie(movieID, title, genre, duration, price);
             listMovie.add(movie);
         }
          
