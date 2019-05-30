@@ -98,7 +98,7 @@ public class OrderLineControllerServlet extends HttpServlet {
             throws SQLException, IOException, ParseException {
          
         int orderID = Integer.parseInt(request.getParameter("orderID"));
-        int movieID = Integer.parseInt(request.getParameter("movieID"));
+        String movieID = request.getParameter("movieID");
         
         double price = Double.parseDouble(request.getParameter("price"));
  
@@ -110,7 +110,7 @@ public class OrderLineControllerServlet extends HttpServlet {
      private void deleteOrderLine(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException {
         int orderID = Integer.parseInt(request.getParameter("orderID"));
-        int movieID = Integer.parseInt(request.getParameter("movieID"));
+        String movieID = request.getParameter("movieID");
           double price = Double.parseDouble(request.getParameter("price"));
  
         OrderLine orderLine = new OrderLine(orderID, movieID, price);

@@ -20,10 +20,10 @@ public class Order implements Serializable {
     private String status;
     private Date date = new Date();
     private double total;
-    private int userID;
+    private String userID;
     
     
-    public Order(int orderID, int userID, String status, Date date, double total){
+    public Order(int orderID, String userID, String status, Date date, double total){
         this.orderID = orderID;
         this.userID = userID;
         this.status = status;
@@ -56,7 +56,7 @@ public class Order implements Serializable {
         this.total = total;
     }
     
-    public int getUserID() {
+    public String getUserID() {
         return userID;
     }
     

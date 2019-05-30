@@ -78,7 +78,7 @@ public class OrderControllerServlet extends HttpServlet{
             throws SQLException, IOException, ParseException {
          
         int orderID = Integer.parseInt(request.getParameter("orderID"));
-        int userID = Integer.parseInt(request.getParameter("userID"));
+        String userID = request.getParameter("userID");
         String status = request.getParameter("status");
         
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/YYYY");
@@ -94,7 +94,7 @@ public class OrderControllerServlet extends HttpServlet{
     private void updateOrder(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ParseException {
         int orderID = Integer.parseInt(request.getParameter("orderID"));
-         int userID = Integer.parseInt(request.getParameter("userID"));
+         String userID = request.getParameter("userID");
         String status = request.getParameter("status");
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/YYYY");
         Date date = format.parse(request.getParameter("date"));

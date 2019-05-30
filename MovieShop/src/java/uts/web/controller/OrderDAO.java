@@ -43,7 +43,7 @@ public class OrderDAO {
          PreparedStatement ps = conn.prepareStatement(INSERT_QUERY);
          
   
-         ps.setInt(1, order.getUserID());
+         ps.setString(1, order.getUserID());
 
          ps.setString(2, order.getStatus());
          ps.setObject(3, order.getDate());
@@ -94,7 +94,7 @@ public class OrderDAO {
          
         while (resultSet.next()) {
             orderID = resultSet.getInt("orderID");
-            int userID = resultSet.getInt("userID");
+            String userID = resultSet.getString("userID");
             String status = resultSet.getString("status");
             Date date = resultSet.getDate("date");
             double total = resultSet.getDouble("total");
@@ -124,7 +124,7 @@ public class OrderDAO {
          
         if (resultSet.next()) {
             orderID = resultSet.getInt("orderID");
-            int userID = resultSet.getInt("userID");
+            String userID = resultSet.getString("userID");
             String status = resultSet.getString("status");
             Date date = resultSet.getDate("date");
             double total = resultSet.getDouble("total");

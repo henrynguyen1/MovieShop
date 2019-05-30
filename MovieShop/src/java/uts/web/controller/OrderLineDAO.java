@@ -49,7 +49,7 @@ public class OrderLineDAO {
        
          
          ps.setInt(1, orderLine.getOrderID());
-         ps.setInt(2, orderLine.getMovieID());
+         ps.setString(2, orderLine.getMovieID());
          ps.setDouble(3, orderLine.getPrice());
          
          boolean rowInserted = ps.executeUpdate() > 0;
@@ -66,7 +66,7 @@ public class OrderLineDAO {
         PreparedStatement ps = conn.prepareStatement(DELETE_QUERY);
      
         ps.setInt(1, orderLine.getOrderID());
-        ps.setInt(2, orderLine.getMovieID());
+        ps.setString(2, orderLine.getMovieID());
          
         boolean rowDeleted = ps.executeUpdate() > 0;
         ps.close();
@@ -85,7 +85,7 @@ public class OrderLineDAO {
          
         while (resultSet.next()) {
             orderLine.setOrderID(resultSet.getInt("orderID"));
-            orderLine.setMovieID(resultSet.getInt("movieID"));
+            orderLine.setMovieID(resultSet.getString("movieID"));
             orderLine.setPrice(resultSet.getDouble("price"));
             
             listOrder.add(orderLine);
@@ -110,7 +110,7 @@ public class OrderLineDAO {
          
         if (resultSet.next()) {
             int orderID = resultSet.getInt("orderID");
-            int movieID = resultSet.getInt("movieID");
+            String movieID = resultSet.getString("movieID");
             double price = resultSet.getDouble("price");
              
             orderLine = new OrderLine(orderID, movieID, price);

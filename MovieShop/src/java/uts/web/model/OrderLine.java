@@ -13,10 +13,10 @@ import java.io.Serializable;
  */
 public class OrderLine implements Serializable {
     private int orderID;
-    private int movieID;
+    private String movieID;
     private double price;
     
-    public OrderLine(int orderID, int movieID, double price){
+    public OrderLine(int orderID, String movieID, double price){
         this.orderID = orderID;
         this.movieID = movieID;
         this.price = price;     
@@ -34,11 +34,11 @@ public class OrderLine implements Serializable {
         this.orderID = orderID;
     }
     
-    public int getMovieID(){
+    public String getMovieID(){
         return movieID;
     }
     
-    public void setMovieID(int movieID){
+    public void setMovieID(String movieID){
         this.movieID = movieID;
     }
     
