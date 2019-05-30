@@ -77,10 +77,11 @@
              <img src="./img/Mask.jpg" alt="The Mask" style="width:150px;height:200px;">
              <a class="nav-link" href="">The Mask</a>
               <a class="nav-link" href="">Buy</a>
+              <a class="nav-link" href="">Edit</a>
              <img src="./img/DD.jpg" alt="Dumb and Dumberer" style="width:150px;height:200px;">
              <a class="nav-link" href="">Dumb and Dumberer</a> 
               <a class="nav-link" href="">Buy</a> 
-              
+              <a class="nav-link" href="">Edit</a>
          </div>
         
         

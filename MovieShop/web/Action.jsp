@@ -78,11 +78,11 @@
              
              <a class="nav-link" href="">The Avengers</a>
              <a class="nav-link" href="">Buy</a>
-                        
+             <a class="nav-link" href="">Edit</a>           
              <img src="./img/gD.jpg" alt="Godzilla" style="width:150px;height:200px;">
              <a class="nav-link" href="">Godzilla</a> 
               <a class="nav-link" href="">Buy</a> 
-              
+             <a class="nav-link" href="">Edit</a> 
          </div>
         
         

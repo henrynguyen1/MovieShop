@@ -77,9 +77,11 @@
               <img src="./img/Rev.jpg" alt="The Revenant" style=width:150px;height:200px;"> 
              <a class="nav-link" href="">The Revenant</a>
               <a class="nav-link" href="">Buy</a>
+              <a class="nav-link" href="">Edit</a>
              <img src="./img/Help.jpg" alt="The Help" style=width:150px;height:200px;">
              <a class="nav-link" href="">The Help</a>
               <a class="nav-link" href="">Buy</a>
+              <a class="nav-link" href="">Edit</a>
               
          </div>
         

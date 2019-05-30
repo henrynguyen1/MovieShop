@@ -79,9 +79,11 @@
              
              <a class="nav-link" href="">Insidious</a>
              <a class="nav-link" href="">Buy</a>           
+             <a class="nav-link" href="">Edit</a>
              <img src="./img/Omen.jpg" alt="The Omen" style="width:150px;height:200px;">
              <a class="nav-link" href="">The Omen</a> 
               <a class="nav-link" href="">Buy</a>
+              <a class="nav-link" href="">Edit</a>
          </div>
         
         
