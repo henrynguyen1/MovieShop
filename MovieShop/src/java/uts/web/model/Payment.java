@@ -65,6 +65,17 @@ public class Payment implements Serializable {
         this.date = date;
         this.status = PaymentStatus.valueOf(status);
     }
+    
+    public Payment(int orderID, int userID, double amount, String type,
+            LocalDate date, String status) {
+        this.paymentID = 0;
+        this.orderID = orderID;
+        this.userID = userID;
+        this.amount = amount;
+        this.type = PaymentType.valueOf(type);
+        this.date = date;
+        this.status = PaymentStatus.valueOf(status);
+    }
 
     public double getAmount() {
         return amount;

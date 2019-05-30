@@ -9,10 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+//import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
+//import java.util.List;
 import uts.isd.model.dao.DBConnector;
 
 import uts.web.model.Payment;
@@ -195,7 +195,7 @@ public class PaymentDAO {
      * @return - list of payments made by user.
      * @throws SQLException - connection to the database could not be created.
      */
-    public List<Payment> getPayments(int userID) throws SQLException {
+    public ArrayList<Payment> getPayments(int userID) throws SQLException {
         ArrayList<Payment> userPayments = new ArrayList<>();
         Payment nextPay = new Payment();
         
@@ -234,7 +234,7 @@ public class PaymentDAO {
      * @return - list of payments made on the date.
      * @throws SQLException - connection to the database could not be created.
      */
-    public List<Payment> getPayments(LocalDate date) throws SQLException {
+    public ArrayList<Payment> getPayments(LocalDate date) throws SQLException {
         ArrayList<Payment> datePayments = new ArrayList<>();
         Payment nextPay = new Payment();
         
@@ -274,7 +274,7 @@ public class PaymentDAO {
      * @return - list of payments made by a particular user on a specific date.
      * @throws SQLException - connection to the database could not be created.
      */
-    public List<Payment> getPayments(int userID, LocalDate date) throws SQLException {
+    public ArrayList<Payment> getPayments(int userID, LocalDate date) throws SQLException {
         ArrayList<Payment> userPayments = new ArrayList<>();
         Payment nextPay = new Payment();
         
