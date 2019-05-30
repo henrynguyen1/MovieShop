@@ -75,24 +75,38 @@
          </div>
             
              </div>
-             <img src="./img/Ins.jpg" alt="Insidious" style="width:150px;height:200px;"> 
+             <img src="./img/Ins.jpg" alt="Insidious" style=width:150px;height:200px;">
+             <a class="nav-link" href="InsidiousDetails.jsp">Insidious</a>
              
-             <a class="nav-link" href="">Insidious</a>
-             <a class="nav-link" href="">Buy</a>           
-             <a class="nav-link" href="">Edit</a>
-             <img src="./img/Omen.jpg" alt="The Omen" style="width:150px;height:200px;">
-             <a class="nav-link" href="">The Omen</a> 
-              <a class="nav-link" href="">Buy</a>
-              <a class="nav-link" href="">Edit</a>
+             
+             <img src="./img/Omen.jpg" alt="The Omen" style=width:150px;height:200px;"> 
+             <a class="nav-link" href="The OmenDetails.jsp">The Omen</a> 
+             
          </div>
         
         
         <div class="row" style="text-align: center; background-color: linen">
                    <div class="col-sm border border-dark pt-5 pb-5 mt-5 mb-5 ml-2 mr-1">
-                        <h3><a>Click Movie</a> to purchase.</h3>
+                        <h3><a>Purchase</a> a Movie.</h3>
                    </div>
         </div> 
-    
+    <div class="fixed-bottom" style="background-color: orange; ">
+            <div class ="row">
+               
+                <div class="col-sm-1 ">
+                    <a>We accept: </a>
+                </div>
+                <div class="col-lg-8 col-sm">
+                    <img  title="mastercard" src="./Picture/master.jpg">
+                    <img  title="visa" src="./Picture/visa.png">
+                    <img  title="paypal" src="./Picture/paypal.png">
+                </div>
+                 <div class="col-sm">
+                    <h3 style="font-size:20px">© MOVIE STORE 2019</h3>
+                </div>
+                
+            </div>
+            </div>
     
    
         
