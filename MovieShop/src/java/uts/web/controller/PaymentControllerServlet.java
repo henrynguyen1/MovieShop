@@ -8,6 +8,7 @@ package uts.web.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 //import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -32,40 +33,43 @@ public class PaymentControllerServlet extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
-     * @param response servlet response
+     * @param req servlet request
+     * @param res servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        String action = request.getServletPath();
+        String action = req.getServletPath();
         
-        //try {
+        try {
             switch(action) {
                 case "/new":
-                    // TODO: show new_payment.jsp
+                    showNewPaymentForm(req, res);
                     break;
                 case "/insert":
-                    // TODO: add new payment to database
+                    insertPayment(req, res);
                     break;
                 case "/delete":
-                    // TODO: delete payment from database before it's finalised
+                    deletePayment(req, res);
                     break;
                 case "/edit":
-                    // TODO: show new_payment.jsp with payment preloaded
+                    showEditPaymentForm(req, res);
                     break;
                 case "/update":
-                    // TODO: update payment in database before it's finalised
+                    updatePayment(req, res);
+                    break;
+                case "/confirm":
+                    showConfirmPage(req, res);
                     break;
                 default:
-                    // TODO: get payment history for user
+                    listPayments(req, res);
                     break;
             }
-        //}
-        /*catch (SQLException sqle) {
+        }
+        catch (SQLException sqle) {
             throw new ServletException(sqle);
-        }*/
+        }
         
         //response.setContentType("text/html;charset=UTF-8");
         //try (PrintWriter out = response.getWriter()) {
@@ -86,29 +90,29 @@ public class PaymentControllerServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
+     * @param req servlet request
+     * @param res servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        processRequest(request, response);
+        processRequest(req, res);
     }
 
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
-     * @param response servlet response
+     * @param req servlet request
+     * @param res servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        processRequest(request, response);
+        processRequest(req, res);
     }
 
     /**
@@ -120,5 +124,79 @@ public class PaymentControllerServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
+    private void listPayments(HttpServletRequest req, HttpServletResponse res)
+            throws SQLException, IOException, ServletException {
+        int userID = Integer.parseInt(req.getParameter("uid"));
+        ArrayList<Payment> paymentList = PDAO.getPayments(userID);
+        //boolean paymentsAdded = paymentList.addAll(PDAO.getPayments(userID));
+        req.setAttribute("paymentList", paymentList);
+        RequestDispatcher rd = req.getRequestDispatcher("payment_history.jsp");
+        rd.forward(req, res);
+    }
+    
+    private void showNewPaymentForm(HttpServletRequest req, HttpServletResponse res)
+            throws IOException, ServletException {
+        RequestDispatcher rd = req.getRequestDispatcher("new_payment.jsp");
+        rd.forward(req, res);
+    }
+    
+    private void showConfirmPage(HttpServletRequest req, HttpServletResponse res)
+            throws SQLException, IOException, ServletException {
+        int payID = Integer.parseInt(req.getParameter("payid"));
+        Payment existingPayment = PDAO.getPayment(payID);
+        RequestDispatcher rd = req.getRequestDispatcher("new_payment.jsp");
+        req.setAttribute("payment", existingPayment);
+        rd.forward(req, res);
+    }
+    
+    private void showEditPaymentForm(HttpServletRequest req, HttpServletResponse res)
+            throws SQLException, IOException, ServletException {
+        int payID = Integer.parseInt(req.getParameter("payid"));
+        Payment existingPayment = PDAO.getPayment(payID);
+        RequestDispatcher rd = req.getRequestDispatcher("new_payment.jsp");
+        req.setAttribute("payment", existingPayment);
+        rd.forward(req, res);
+    }
+    
+    private void insertPayment(HttpServletRequest req, HttpServletResponse res)
+            throws SQLException, IOException, ServletException {
+        //int payID = Integer.parseInt(req.getParameter("payid"));
+        int orderID = Integer.parseInt(req.getParameter("oid"));
+        int userID = Integer.parseInt(req.getParameter("uid"));
+        double amount = Double.parseDouble(req.getParameter("amount"));
+        LocalDate date = LocalDate.parse(req.getParameter("date"));
+        String type = req.getParameter("method");
+        String status = req.getParameter(req.getParameter("status"));
+        
+        Payment p = new Payment(orderID, userID, amount, type, date, status);
+        int pIns = PDAO.addNewPayment(p);
+        // TODO: What happens if the row isn't updated?
+        res.sendRedirect("confirm");
+    }
+    
+    private void updatePayment(HttpServletRequest req, HttpServletResponse res)
+        throws SQLException, IOException, ServletException {
+        int payID = Integer.parseInt(req.getParameter("payid"));
+        int orderID = Integer.parseInt(req.getParameter("orderid"));
+        int userID = Integer.parseInt(req.getParameter("userid"));
+        double amount = Double.parseDouble(req.getParameter("amount"));
+        LocalDate date = LocalDate.parse(req.getParameter("date"));
+        String type = req.getParameter("method");
+        String status = req.getParameter(req.getParameter("status"));
+        
+        Payment p = new Payment(payID, orderID, userID, amount, type, date, status);
+        int pUp = PDAO.updatePayment(p);
+        // TODO: What happens if the row isn't updated?
+        res.sendRedirect("confirm");
+    }
+    
+    private void deletePayment(HttpServletRequest req, HttpServletResponse res)
+        throws SQLException, IOException, ServletException {
+        int payID = Integer.parseInt(req.getParameter("payid"));
+        
+        Payment p = PDAO.getPayment(payID);
+        int pDel = PDAO.deletePayment(p);
+        res.sendRedirect("new");
+    }
 }

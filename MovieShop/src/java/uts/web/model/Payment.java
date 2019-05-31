@@ -14,6 +14,8 @@ import java.time.LocalDate;
 enum PaymentType {
     WALLET,
     CREDIT_CARD,
+    VISA,
+    MASTER_CARD,
     BANK_TRANSFER,
     PAYPAL;    
 }
@@ -56,6 +58,17 @@ public class Payment implements Serializable {
     public Payment(int paymentID, int orderID, int userID, double amount,
             String type, LocalDate date, String status) {
         this.paymentID = paymentID;
+        this.orderID = orderID;
+        this.userID = userID;
+        this.amount = amount;
+        this.type = PaymentType.valueOf(type);
+        this.date = date;
+        this.status = PaymentStatus.valueOf(status);
+    }
+    
+    public Payment(int orderID, int userID, double amount, String type,
+            LocalDate date, String status) {
+        this.paymentID = 0;
         this.orderID = orderID;
         this.userID = userID;
         this.amount = amount;

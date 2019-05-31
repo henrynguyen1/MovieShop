@@ -13,31 +13,33 @@ import java.sql.SQLException;
  * @author George and Ben Stevens (02078018)
  */
 public class DBConnector extends DB {
-    /*
+
     private final String URL;
     private final String DBUSER;
     private final String DBPASS;
     private final String DRIVER;
     private Connection conn;
-    */
-    /*
+
+    /**
+     * Default constructor for creating connections to MovieShopDB.
+     */
     public DBConnector() {
         URL = "jdbc:derby://localhost:1527/MovieShopDB";
         DBUSER = "movieshop"; 
         DBPASS = "movieshop";
         DRIVER = "org.apache.derby.jdbc.ClientDriver";
         conn = null;
-    }*/
+    }
     
     /**
      *
      * @throws ClassNotFoundException
      * @throws SQLException
-     */
+     *
     public DBConnector() throws ClassNotFoundException, SQLException {
         Class.forName(driver);
         conn = DriverManager.getConnection(URL, dbuser, dbpass);
-    }
+    }*/
 
     /**
      * Open a connection to MovieShopDB for CRUD operations.
@@ -45,8 +47,7 @@ public class DBConnector extends DB {
      * @throws SQLException - No connections can be created if the DB is not
      *                        running.
      */
-    public Connection openConnection() {
-       /* 
+    public Connection openConnection() throws SQLException {
         try {
             Class.forName(DRIVER);
             conn = DriverManager.getConnection(URL, DBUSER, DBPASS);
@@ -54,8 +55,7 @@ public class DBConnector extends DB {
         catch (ClassNotFoundException cnfe) {
             //connection to DB could not be created.
             throw new SQLException(cnfe);
-        }*/
-        
+        }
         return this.conn;
     }
     
@@ -67,6 +67,6 @@ public class DBConnector extends DB {
         
         if (conn != null && !conn.isClosed()) {
             this.conn.close();
-       }
+        }
     }
 }

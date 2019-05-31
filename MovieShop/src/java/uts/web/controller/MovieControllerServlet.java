@@ -16,6 +16,7 @@ import java.util.logging.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import uts.web.model.*;
+import uts.web.model.dao.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -113,7 +114,7 @@ public class MovieControllerServlet extends HttpServlet {
        
         String movieID = request.getParameter("movieID");
         
-        Movie newMovie = new Movie(movieID, title, genre, duration, price);
+        Movie newMovie = new Movie(movieID, "title", "genre", "duration", 0.00);
         MovieDAO dao = new MovieDAO();
         dao.deleteMovie(newMovie);
         response.sendRedirect("list");}
@@ -130,7 +131,11 @@ public class MovieControllerServlet extends HttpServlet {
     
      @Override //Destroy the servlet and release the resources of the application
     public void destroy() {
-        db.closeConnection();
-
-       }
+        try {
+            db.closeConnection();
+        }
+        catch(SQLException sqle) {
+            sqle.getStackTrace();
+        }
+    }
 }
