@@ -62,7 +62,7 @@
         <div class="container mt-lg-4 mt-sm-2 pb-4" style="width:100%; height:650px; background-color: lightgray;">
             <div class="row" style="background-color: lightgray;">
                 <div class="col mt-5" style="text-align: left;">
-                    <h2> How would you like to pay for your order? </h2>
+                    <h2> Your Payment History </h2>
                 </div>
             </div>
             <br>

@@ -61,9 +61,9 @@
                 </div>
             </div>
             <br>
-            <form action="PaymentControllerServlet" method="post">
+            <form action="update" method="post">
                 <table>
-                    <caption><h2>Your Payment History</h2></caption>
+                    <caption><h2>Please review and confirm your payment details.</h2></caption>
                     <tr>
                         <th>Payment ID</th>
                         <th>Order ID</th>
@@ -72,17 +72,18 @@
                         <th>Type</th>
                         <th>Status</th>
                     </tr>
-                    <c:forEach var="payment" items="${paymentList}">
-                        <tr>
-                            <td><c:out value="${payment.getPaymentID().toString()}" /></td>
-                            <td><c:out value="${payment.getOrderID().toString()}" /></td>
-                            <td><c:out value="${payment.getAmount().toString()}" /></td>
-                            <td><c:out value="${payment.getDate().toString()}" /></td>
-                            <td><c:out value="${payment.getType()}" /></td>
-                            <td><c:out value="${payment.getStatus()}" /></td>
-                        </tr>
-                    </c:forEach>
+                    <tr>
+                        <td><c:out value="${payment.getPaymentID().toString()}" /></td>
+                        <td><c:out value="${payment.getOrderID().toString()}" /></td>
+                        <td><c:out value="${payment.getAmount().toString()}" /></td>
+                        <td><c:out value="${payment.getDate().toString()}" /></td>
+                        <td><c:out value="${payment.getType()}" /></td>
+                        <td><c:out value="${payment.getStatus()}" /></td>
+                     </tr>
                 </table>
+                     <input class="button" type="submit" value="confirm" onclick="" />
+                     &nbsp;
+                     <input class="button" type="submit" value="go back" onclick="" />
             </form>
             
             <div class="fixed-bottom" style="background-color: orange; ">
