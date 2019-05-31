@@ -43,7 +43,28 @@ public class PaymentControllerServlet extends HttpServlet {
         String action = req.getServletPath();
         
         try {
-            switch(action) {
+            if(action.equalsIgnoreCase("/new")) {
+                showNewPaymentForm(req, res);
+            }
+            else if(action.equalsIgnoreCase("/insert")) {
+                insertPayment(req, res);
+            }
+            else if(action.equalsIgnoreCase("/delete")) {
+                deletePayment(req, res);
+            }
+            else if(action.equalsIgnoreCase("/edit")) {
+                deletePayment(req, res);
+            }
+            else if(action.equalsIgnoreCase("/update")) {
+                deletePayment(req, res);
+            }
+            else if(action.equalsIgnoreCase("/confirm")) {
+                deletePayment(req, res);
+            }
+            else { // list all payments for user
+                listPayments(req, res);
+            }
+            /*switch(action) {
                 case "/new":
                     showNewPaymentForm(req, res);
                     break;
@@ -65,7 +86,7 @@ public class PaymentControllerServlet extends HttpServlet {
                 default:
                     listPayments(req, res);
                     break;
-            }
+            }*/
         }
         catch (SQLException sqle) {
             throw new ServletException(sqle);
