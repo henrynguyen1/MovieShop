@@ -117,14 +117,14 @@
                             </c:if>
                         </td>
                 </tr>
-                <tr><td>Card Number:</td><td><input size="16" maxlength="16" type="text" name="cardnum" /></td></tr>
-                <tr><td>Name On Card:</td><td><input size="50" maxlength="50" type="text" name="cardname" /></td></tr>
+                <tr><td>Card Number:</td><td><input size="16" maxlength="16" type="text" name="cardnum" disabled /></td></tr>
+                <tr><td>Name On Card:</td><td><input size="50" maxlength="50" type="text" name="cardname" disabled /></td></tr>
                 <tr><td>Expiry Date:</td>
                     <td>
-                        <input size="4" maxlength="4" type="text" name="cardyear" value="YYYY" />
-                        <input size="2" maxlength="2" type="text" name="cardmonth" value="MM" />
+                        <input size="4" maxlength="4" type="text" name="cardyear" value="YYYY" disabled />
+                        <input size="2" maxlength="2" type="text" name="cardmonth" value="MM" disabled />
                     </td></tr>
-                <tr><td>CVV2:</td><td><input size="3" maxlength="3" type="text" name="cvv2" /></td></tr>
+                <tr><td>CVV2:</td><td><input size="3" maxlength="3" type="text" name="cvv2" disabled /></td></tr>
                 <tr><td></td>
                     <td>
                         <input class="button" type="submit" value="confirm" /> 
