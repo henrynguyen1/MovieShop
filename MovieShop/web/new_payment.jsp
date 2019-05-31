@@ -4,7 +4,13 @@
     Author     : Ben Stevens (02078018)
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@page import="uts.web.model.Payment" %>
+<%@page import="uts.web.controller.PaymentControllerServlet" %>
+<%@page import="java.sql.*" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -61,28 +67,68 @@
                          <h2> How would you like to pay for your order? </h2>
                    </div>
                </div>
-            <br>
-            <form action="insert" method="post">
+                <br>
+                <c:if test="${payment != null}">
+                    <form action="update" method="post">
+                </c:if>
+                <c:if test="${payment == null}">
+                    <form action="insert" method="post">
+                </c:if>
+                <c:if test="${payment != null}">
+                    <input type="hidden" name="payid" value="<c:out value='${payment.getPaymentID().toString()}' />" disabled />
+                    <input type="hidden" name="date" value="<c:out value='${payment.getDate().toString()}' />" disabled />
+                    <input type="hidden" name="userid" value="<c:out value='${payment.getUserID().toString()}' />" disabled />
+                    <input type="hidden" name="status" value="<c:out value='${payment.getStatus()}' />" disabled />
+                </c:if>
+                <c:if test="${payment == null}">
+                    <input type="hidden" name="userid" value="from shipment page" disabled />
+                </c:if>
                 <table>
-                <tr>
-                    <td>
-                        Payment Type:
-                    </td>
-                    <td><select name="paymentType">
-                            <option value="VISA">VISA</option>
-                            <option value="MASTER_CARD">MASTER_CARD</option>
-                            <option value="PAYPAL">PAYPAL</option>
-                        </select>
-                    </td>
+                <tr></tr>
+                    <tr>
+                        <td>Order ID:</td>
+                        <td>
+                            <c:if test="${payment != null}">
+                                <input type="text" name="orderid" value="<c:out value='${payment.getOrderID()}' />" disabled />
+                            </c:if>
+                            <c:if test="${payment == null}">
+                                <input type="text" name="orderid" value="from shipment page" disabled />
+                            </c:if>    
+                    </tr>
+                    <tr>
+                        <td>Amount($):</td>
+                        <td>
+                            <c:if test="${payment != null}">
+                                <input type="text" name="amount" value="<c:out value='${payment.getAmount().toString()}' />" disabled />
+                            </c:if>
+                            <c:if test="${payment == null}">
+                                <input type="text" name="amount" value="from shipment page" disabled />
+                            </c:if>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Payment Type:</td>
+                        <td>
+                            <c:if test="${payment != null}">
+                                    <input type="text" name="method" value="<c:out value='${payment.getMethod()}' />" disabled />
+                            </c:if>
+                            <c:if test="${payment == null}">
+                                <select name="method">
+                                    <option value="VISA">VISA</option>
+                                    <option value="MASTER_CARD">MASTER_CARD</option>
+                                    <option value="PAYPAL" selected>PAYPAL</option>
+                                </select>
+                            </c:if>
+                        </td>
                 </tr>
-                <tr><td>Card Number:</td><td><input size="16" type="text" name="cardnum"></td></tr>
-                <tr><td>Name On Card:</td><td><input size="50" type="text" name="cardname"></td></tr>
+                <tr><td>Card Number:</td><td><input size="16" type="text" name="cardnum" /></td></tr>
+                <tr><td>Name On Card:</td><td><input size="50" type="text" name="cardname" /></td></tr>
                 <tr><td>Expiry Date:</td>
                     <td>
-                        <input size="4" type="text" name="cardyear" default="YYYY">
-                        <input size="2" type="text" name="cardmon" default="MM">
+                        <input size="4" type="text" name="cardyear" default="YYYY" />
+                        <input size="2" type="text" name="cardmonth" default="MM" />
                     </td></tr>
-                <tr><td>CVV2:</td><td><input size="4" type="text" name="cvv2"></td></tr>
+                <tr><td>CVV2:</td><td><input size="3" type="text" name="cvv2" /></td></tr>
                 <tr><td></td>
                     <td>
                         <input class="button" type="submit" value="confirm" onclick="location.href = 'new'"> 

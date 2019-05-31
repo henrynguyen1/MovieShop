@@ -162,8 +162,8 @@ public class PaymentControllerServlet extends HttpServlet {
     private void insertPayment(HttpServletRequest req, HttpServletResponse res)
             throws SQLException, IOException, ServletException {
         //int payID = Integer.parseInt(req.getParameter("payid"));
-        int orderID = Integer.parseInt(req.getParameter("oid"));
-        int userID = Integer.parseInt(req.getParameter("uid"));
+        int orderID = Integer.parseInt(req.getParameter("orderid"));
+        int userID = Integer.parseInt(req.getParameter("userid"));
         double amount = Double.parseDouble(req.getParameter("amount"));
         LocalDate date = LocalDate.parse(req.getParameter("date"));
         String type = req.getParameter("method");
