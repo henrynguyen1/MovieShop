@@ -9,12 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
-import uts.web.model.dao.*;
 
+import uts.web.model.dao.*;
 import uts.web.model.Payment;
 
 /**
@@ -63,7 +61,7 @@ public class PaymentDAO {
         
         // Connect to DB and set query up.
         Connection conn = DBCONN.openConnection();
-        PreparedStatement ps = conn.prepareStatement(UPDATE_QUERY);
+        PreparedStatement ps = conn.prepareStatement(INSERT_QUERY);
         // Database fields to be inserted.
         ps.setInt(1, payment.getOrderID());
         ps.setInt(2, payment.getUserID());
@@ -195,7 +193,7 @@ public class PaymentDAO {
      * @return - list of payments made by user.
      * @throws SQLException - connection to the database could not be created.
      */
-    public List<Payment> getPayments(int userID) throws SQLException {
+    public ArrayList<Payment> getPayments(int userID) throws SQLException {
         ArrayList<Payment> userPayments = new ArrayList<>();
         Payment nextPay = new Payment();
         
@@ -234,7 +232,7 @@ public class PaymentDAO {
      * @return - list of payments made on the date.
      * @throws SQLException - connection to the database could not be created.
      */
-    public List<Payment> getPayments(LocalDate date) throws SQLException {
+    public ArrayList<Payment> getPayments(LocalDate date) throws SQLException {
         ArrayList<Payment> datePayments = new ArrayList<>();
         Payment nextPay = new Payment();
         
@@ -274,7 +272,7 @@ public class PaymentDAO {
      * @return - list of payments made by a particular user on a specific date.
      * @throws SQLException - connection to the database could not be created.
      */
-    public List<Payment> getPayments(int userID, LocalDate date) throws SQLException {
+    public ArrayList<Payment> getPayments(int userID, LocalDate date) throws SQLException {
         ArrayList<Payment> userPayments = new ArrayList<>();
         Payment nextPay = new Payment();
         

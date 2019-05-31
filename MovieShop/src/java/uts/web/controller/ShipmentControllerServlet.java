@@ -18,6 +18,7 @@ import uts.web.model.dao.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import uts.web.model.dao.*;
 
 /**
  * ControllerServlet.java
@@ -42,14 +43,8 @@ public class ShipmentControllerServlet extends HttpServlet {
      */
       @Override //Create and instance of DBConnector for the deployment session
     public void init() {
-        try {
-            db = new DBConnector();
-            shipmentDAO = new ShipmentDAO();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ShipmentControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(ShipmentControllerServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        db = new DBConnector();
+        shipmentDAO = new ShipmentDAO();
     }
     
      /**
