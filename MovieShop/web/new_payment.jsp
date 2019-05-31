@@ -75,12 +75,17 @@
                         </select>
                     </td>
                 </tr>
-                <tr><td>Email:</td><td><input size="25" type="text" name="email"></td></tr>
-                <tr><td>Password:</td><td><input size="25" type="password" name="password"></td></tr>
-                <tr><td>Phone Number:</td><td><input size="25" type="text" name="phone"></td></tr>
+                <tr><td>Card Number:</td><td><input size="16" type="text" name="cardnum"></td></tr>
+                <tr><td>Name On Card:</td><td><input size="50" type="text" name="cardname"></td></tr>
+                <tr><td>Expiry Date:</td>
+                    <td>
+                        <input size="4" type="text" name="cardyear" default="YYYY">
+                        <input size="2" type="text" name="cardmon" default="MM">
+                    </td></tr>
+                <tr><td>CVV2:</td><td><input size="4" type="text" name="cvv2"></td></tr>
                 <tr><td></td>
                     <td>
-                        <input class="button" type="submit" value="confirm" onclick="location.href = 'confirm_payment.jsp'"> 
+                        <input class="button" type="submit" value="confirm" onclick="location.href = 'new'"> 
                         &nbsp; 
                         <button class="button" type="button" onclick="location.href = 'index.html'" > Home Page </button>
                     </td>
