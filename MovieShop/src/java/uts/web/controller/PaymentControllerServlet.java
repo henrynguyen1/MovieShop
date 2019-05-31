@@ -127,7 +127,8 @@ public class PaymentControllerServlet extends HttpServlet {
     
     private void listPayments(HttpServletRequest req, HttpServletResponse res)
             throws SQLException, IOException, ServletException {
-        int userID = Integer.parseInt(req.getParameter("uid"));
+        //int userID = Integer.parseInt(req.getParameter("userid"));
+        int userID = 1;
         ArrayList<Payment> paymentList = PDAO.getPayments(userID);
         //boolean paymentsAdded = paymentList.addAll(PDAO.getPayments(userID));
         req.setAttribute("paymentList", paymentList);
