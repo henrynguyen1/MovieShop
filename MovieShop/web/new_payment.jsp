@@ -127,7 +127,7 @@
                 <tr><td>CVV2:</td><td><input size="3" type="text" name="cvv2" /></td></tr>
                 <tr><td></td>
                     <td>
-                        <input class="button" type="submit" value="confirm" onclick="location.href = 'new'"> 
+                        <input class="button" type="submit" value="confirm" /> 
                         &nbsp; 
                         <button class="button" type="button" onclick="location.href = 'index.html'" > Home Page </button>
                     </td>
