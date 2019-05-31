@@ -2,20 +2,28 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
       <context-param>
         <param-name>jdbcURL</param-name>
-        <param-value>jdbc:derby://localhost:1527/MoviesDB</param-value>
+        <param-value>jdbc:derby://localhost:1527/MovieShopDB</param-value>
     </context-param>
  
     <context-param>
         <param-name>jdbcUsername</param-name>
-        <param-value>JB</param-value>
+        <param-value>movieshop</param-value>
     </context-param>
  
     <context-param>
         <param-name>jdbcPassword</param-name>
-        <param-value>password</param-value>
+        <param-value>movieshop</param-value>
     </context-param>
     
     
+    <servlet>
+        <servlet-name>PaymentControllerServlet</servlet-name>
+        <servlet-class>uts.web.controller.PaymentControllerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaymentControllerServlet</servlet-name>
+        <url-pattern>/PaymentControllerServlet</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ConnServlet</servlet-name>
         <servlet-class>uts.web.controller.ConnServlet</servlet-class>

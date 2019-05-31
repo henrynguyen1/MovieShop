@@ -42,7 +42,7 @@ public class PaymentDAO {
                 + " Date = ?, Status = ?, Type = ? WHERE PaymentID = ?";
         DELETE_QUERY = "DELETE FROM payments WHERE PaymentID = ?";
         PAYMENT_SELECT = "SELECT * FROM payments WHERE PaymentID = ?";
-        USER_SELECT = "SELECT * FROM payments WHERE UserID = ?";
+        USER_SELECT = "SELECT * FROM app.payments WHERE UserID = ?";
         DATE_SELECT = "SELECT * FROM payments WHERE Date = ?";
         USER_DATE_SELECT = "SELECT * FROM payments WHERE UserID = ? AND Date = ?";
         
