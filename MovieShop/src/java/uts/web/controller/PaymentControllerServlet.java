@@ -145,7 +145,7 @@ public class PaymentControllerServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         int payID = Integer.parseInt(req.getParameter("payid"));
         Payment existingPayment = PDAO.getPayment(payID);
-        RequestDispatcher rd = req.getRequestDispatcher("new_payment.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("confirm_payment.jsp");
         req.setAttribute("payment", existingPayment);
         rd.forward(req, res);
     }

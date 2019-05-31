@@ -15,7 +15,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Pay For Order</title>
+        <title>Payment History</title>
         <meta http-equiv="Content-Type" content="text/html">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,29 +66,27 @@
                 </div>
             </div>
             <br>
-            <form action="PaymentControllerServlet" method="post">
-                <table>
-                    <caption><h2>Your Payment History</h2></caption>
+            <table>
+                <caption><h2>Your Payment History</h2></caption>
+                <tr>
+                    <th>Payment ID</th>
+                    <th>Order ID</th>
+                    <th>Amount($)</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                </tr>
+                <c:forEach var="payment" items="${paymentList}">
                     <tr>
-                        <th>Payment ID</th>
-                        <th>Order ID</th>
-                        <th>Amount($)</th>
-                        <th>Date</th>
-                        <th>Type</th>
-                        <th>Status</th>
+                        <td><c:out value="${payment.getPaymentID().toString()}" /></td>
+                        <td><c:out value="${payment.getOrderID().toString()}" /></td>
+                        <td><c:out value="${payment.getAmount().toString()}" /></td>
+                        <td><c:out value="${payment.getDate().toString()}" /></td>
+                        <td><c:out value="${payment.getType()}" /></td>
+                        <td><c:out value="${payment.getStatus()}" /></td>
                     </tr>
-                    <c:forEach var="payment" items="${paymentList}">
-                        <tr>
-                            <td><c:out value="${payment.getPaymentID()}" /></td>
-                            <td><c:out value="${payment.getOrderID()}" /></td>
-                            <td><c:out value="${payment.getAmount()}" /></td>
-                            <td><c:out value="${payment.getDate()}" /></td>
-                            <td><c:out value="${payment.getType()}" /></td>
-                            <td><c:out value="${payment.getStatus()}" /></td>
-                        </tr>
-                    </c:forEach>
-                </table>
-            </form>
+                </c:forEach>
+            </table>
             
             <div class="fixed-bottom" style="background-color: orange; ">
             <div class ="row">
