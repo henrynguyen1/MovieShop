@@ -5,8 +5,8 @@
  */
 package uts.web.controller;
 
-import uts.isd.model.dao.DBManager;
-import uts.isd.model.dao.DBConnector;
+import uts.web.model.dao.DBManager;
+import uts.web.model.dao.DBConnector;
 import uts.web.model.User;
 import java.sql.*;
 import java.util.*;
@@ -45,7 +45,7 @@ public class TestDB {
            
            if (user != null) {
             db.deleteUser(ID); // This method must be completed in DBManager class
-            System.out.println("Student is deleted from the database.");
+            System.out.println("User is deleted from the database.");
             }
             
             connector.closeConnection(); //Professional practice is to close connection to database once operations are finalized

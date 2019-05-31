@@ -87,9 +87,7 @@
           session.setAttribute("newuser", user);
           %>                     
         
-            <button class="button" type="submit" onclick="location.href = 'edit_details.jsp'"> Edit Details </button>
-            &nbsp; 
-            <button class="button" type="button" onclick="location.href = 'remove.jsp'" > Remove Account </button>
+            <button class="button" type="submit" onclick="location.href = 'login.jsp'"> Login to your account </button>
             
             <div class="fixed-bottom" style="background-color: orange; ">
             <div class ="row">

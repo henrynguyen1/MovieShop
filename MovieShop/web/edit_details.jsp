@@ -3,6 +3,9 @@
     Created on : 13/05/2019, 3:07:55 PM
     Author     : francobuena
 --%>
+<%@page import="java.sql.Connection"%>
+<%@page import="uts.web.model.dao.DBConnector"%>
+<%@page import="uts.web.model.dao.DBManager"%>
 <%@page import="uts.web.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,7 +23,7 @@
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String phonenumber = request.getParameter("phone");
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("newuser");
     %>
     
     <body>
@@ -76,9 +79,10 @@
                 <tr><td>Email:</td><td><input size="25" type="text" name="newemail" value="<%= user.getEmail()%>"></td></tr>
                 <tr><td>Password:</td><td><input size="25" type="password" name="password" value="<%= user.getPassword()%>"></td></tr>
                 <tr><td>Phone Number:</td><td><input size="25" type="text" name="newphone" value="<%= user.getPhoneNumber()%>"></td></tr> 
+                <tr><td><input type="hidden" value="updated" name="updated"></td>
                 <tr><td></td>
                     <td>
-                        <input class="button" type="submit" value="Save" onclick="location.href = 'save_details.jsp'"> 
+                        <input class="button" type="submit" value="Save"> 
                         &nbsp; 
                         <button class="button" type="button" onclick="location.href = 'welcome.jsp'" > Cancel </button>
                     </td>

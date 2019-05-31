@@ -66,17 +66,17 @@
                   <h1 style="font-family: sans-serif; color: orange;">Sign In</h1>
                     </div>
                 
-                    <form>
+                    <form action="loginAction.jsp" method="post">
                     <div class="form-group">
                         <label for="colFormLabel" class="col-sm-2 col-form-label">Username</label>
                             <div class="form-group col-md-6">
-                        <input type="username" class="form-control" id="colFormLabel" >
+                        <input type="username" name="email" class="form-control" id="colFormLabel" >
                             </div>
                     </div>
                     <div class="form-group">
                          <label for="colFormLabel" class="col-sm-2 col-form-label">Password</label>
                             <div class="form-group col-md-6">
-                        <input type="password" class="form-control" id="colFormLabel" >
+                        <input type="password" name="password" class="form-control" id="colFormLabel" >
                             </div>
                    
                     </div>
