@@ -22,7 +22,7 @@ import uts.web.model.Payment;
  * @author Ben Stevens (02078018)
  */
 public class PaymentDAO {
-    private final DBConnector DBCONN;
+    private DBConnector DBCONN;
     private final String INSERT_QUERY;
     private final String UPDATE_QUERY;
     private final String DELETE_QUERY;
@@ -36,13 +36,13 @@ public class PaymentDAO {
      * the payments table on the database.
      */
     public PaymentDAO() {
-        INSERT_QUERY = "INSERT INTO payments (OrderID, UserID, Amount, Date,"
+        INSERT_QUERY = "INSERT INTO PAYMENTS (OrderID, UserID, Amount, Date,"
                 + " Status, Type) VALUES (?, ?, ?, ?, ?, ?)";
         UPDATE_QUERY = "UPDATE payments SET OrderID = ?, UserID = ?, Amount = ?,"
                 + " Date = ?, Status = ?, Type = ? WHERE PaymentID = ?";
         DELETE_QUERY = "DELETE FROM payments WHERE PaymentID = ?";
         PAYMENT_SELECT = "SELECT * FROM payments WHERE PaymentID = ?";
-        USER_SELECT = "SELECT * FROM app.payments WHERE UserID = ?";
+        USER_SELECT = "SELECT * FROM PAYMENTS WHERE UserID = ?";
         DATE_SELECT = "SELECT * FROM payments WHERE Date = ?";
         USER_DATE_SELECT = "SELECT * FROM payments WHERE UserID = ? AND Date = ?";
         

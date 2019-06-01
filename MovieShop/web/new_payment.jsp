@@ -4,7 +4,7 @@
     Author     : Ben Stevens (02078018)
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@page import="uts.web.model.Payment" %>
@@ -117,14 +117,18 @@
                             </c:if>
                         </td>
                 </tr>
-                <tr><td>Card Number:</td><td><input size="16" maxlength="16" type="text" name="cardnum" disabled /></td></tr>
-                <tr><td>Name On Card:</td><td><input size="50" maxlength="50" type="text" name="cardname" disabled /></td></tr>
+                <tr><td>Card Number:</td><td><input size="16" maxlength="16" type="text" name="cardnum" /></td></tr>
+                <tr><td>Name On Card:</td><td><input size="50" maxlength="50" type="text" name="cardname" /></td></tr>
                 <tr><td>Expiry Date:</td>
                     <td>
-                        <input size="4" maxlength="4" type="text" name="cardyear" value="YYYY" disabled />
-                        <input size="2" maxlength="2" type="text" name="cardmonth" value="MM" disabled />
+                        <input size="4" maxlength="4" type="text" name="cardyear" value="YYYY" />
+                        <input size="2" maxlength="2" type="text" name="cardmonth" value="MM" />
                     </td></tr>
-                <tr><td>CVV2:</td><td><input size="3" maxlength="3" type="text" name="cvv2" disabled /></td></tr>
+                <tr><td>CVV2:</td><td><input size="3" maxlength="3" type="text" name="cvv2" /></td></tr>
+                <%
+                    String ppamount = payment.getAmount().toString();
+                %>
+                <tr><td>PayPal Link:</td><td><input size="20" maxlength="20" type="text" name="paypalid" disabled value="https://paypal.me/MovieShop/11" /></td></tr>
                 <tr><td></td>
                     <td>
                         <input class="button" type="submit" value="confirm" /> 

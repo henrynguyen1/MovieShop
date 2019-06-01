@@ -81,9 +81,9 @@
                         <td><c:out value="${payment.getStatus()}" /></td>
                      </tr>
                 </table>
-                     <input class="button" type="submit" value="confirm" onclick="" />
+                     <input class="button" type="submit" value="confirm" />
                      &nbsp;
-                     <input class="button" type="submit" value="go back" onclick="" />
+                     <input class="button" type="button" value="go back" onclick="href='./new_payment.jsp'" />
             </form>
             
             <div class="fixed-bottom" style="background-color: orange; ">
