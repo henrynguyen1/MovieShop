@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
     Created on : 16/04/2019, 9:44:35 PM
-    Author     : yantoyanto
+    Author     : yantoyanto/fan/franco
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -41,7 +41,7 @@
                          <a class="nav-link" href="">ABOUT</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">PRICES</a>
+                        <a class="nav-link" href="#">ORDER</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="#">CONTACT</a>

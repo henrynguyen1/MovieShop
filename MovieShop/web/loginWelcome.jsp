@@ -1,9 +1,10 @@
 <%-- 
     Document   : loginWelcome
     Created on : 31/05/2019, 12:09:20 PM
-    Author     : francobuena
+    Author     : franco/fan
 --%>
 
+<%@page import="uts.web.model.Login"%>
 <%@page import="uts.web.model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,13 +14,12 @@
         <title>Welcome</title>
         <link rel="stylesheet" type="text/css" href="./style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-       
-        
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
     </head>
     
     <% 
         User user = (User)session.getAttribute("userLogin");
+        Login login = (Login)session.getAttribute("login");
     %>
     
     <body>
@@ -47,7 +47,7 @@
                          <a class="nav-link" href="">ABOUT</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">PRICES</a>
+                        <a class="nav-link" href="#">ORDER</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="#">CONTACT</a>
@@ -71,12 +71,17 @@
                          <p>Email: <%= user.getEmail() %></p>
                          <p>Phone: <%= user.getPhoneNumber() %></p> 
                          <p>Password: <%= user.getPassword() %></p>
+                         <p> Login Date: <%= login.getLoginDate() %> </p>
                    </div>
-               </div>   
-            
-               <button class="button" type="submit" onclick="location.href = 'main.jsp'"> Go to Main </button>
-            
-            
+               </div>     
+                   
+               <%
+                  session.setAttribute("user", user); 
+               %>
+               
+               <button class="button" type="submit" onclick="location.href = 'main.jsp'"> Go to Main </button>           
+
+               
         <div class="fixed-bottom" style="background-color: orange; ">
         <div class ="row">
                

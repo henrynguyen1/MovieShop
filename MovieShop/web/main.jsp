@@ -26,27 +26,30 @@
              <div class="w-100">   
                  <div class="col bg-dark">
                  <nav class="navbar navbar-expand-lg navbar-dark" >
-                     <a class="navbar-brand" href="./index.html">Movie Store</a>
+                     <a class="navbar-brand" href="MovieCatalogueManagement.jsp">Movie Catalogue </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
                 <div class="collapse navbar-collapse" id="navbarMenu">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                         <a class="nav-link" href="./index.html">HOME</a>
+                         <a class="nav-link" href="./main.jsp">HOME</a>
                         </li>
                         <li class="nav-item">
                          <a class="nav-link" href="#">ABOUT</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">PRICES</a>
+                        <a class="nav-link" href="order.jsp">ORDER</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">CONTACT</a>
+                        <a class="nav-link" href="payment_history.jsp">PAYMENTS</a>
                         </li>
                         <li class="nav-item ">
-                        <a class="nav-link" href="./login.jsp">MY ACCOUNT</a>
+                        <a class="nav-link" href="accountmanagement.jsp">ACCOUNT MANAGEMENT</a>
                         </li>
+                        <li class="nav-item ">
+                        <a class="nav-link" href="add_shipment.jsp">SHIPMENTS</a>
+                        </li>                        
                     </ul>
                 </div>
                  </nav>
@@ -56,7 +59,7 @@
         </div>
             
         <% 
-        User user = (User)session.getAttribute("userLogin");
+        User user = (User)session.getAttribute("user");
         %>
             
         <div class="container mt-lg-4 mt-sm-2 pb-4" style="width:100%; height:650px; background-color: bisque;">
@@ -67,19 +70,41 @@
                    </div>
                </div>   
             
-               <button class="button" type="submit" onclick="location.href = 'accountmanagement.jsp'"> Go to Account Management </button>   
-               <button class="button" type="submit" onclick="location.href = 'movies.jsp'"> Go to Movies </button>  
-               <button class="button" type="submit" onclick="location.href = 'shipment_detail.jsp'"> Go to Shipments </button>  
-               <button class="button" type="submit" onclick="location.href = 'saved_orders.jsp'"> Go to Saved Orders </button>  
+        <div
+        
+        <h3> Hot Sellers</h3>
+        
+            <img src =" ./Picture/Ave.jpg" alt =" Avengers" style =" width: 150px;height:200px">
+            <img src =" ./Picture/gD.jpg" alt =" Godzilla" style =" width: 150px;height:200px">
+            <img src =" ./Picture/Mask.jpg" alt =" The Mask" style =" width: 150px;height:200px">
+            <img src =" ./Picture/DD.jpg" alt =" Dumb and Dumber" style =" width: 150px;height:200px">
+        
+        </div>
+                         
+                         
+                         <h4 align = "center">Genres</h4>
+                         
+                         
+                         
+                         
+                         <div class="row" style="height:200px; width: 100%;">
+                             <div class="col-2 mr-5 mt-3 ml-5 border border-primary bg-danger" style="color: white; ">
+                                 <a class="nav-link"  href="./horror.jsp" style="font-size: 50px; align-content: center; text-align: center">Horror</a>
+                             </div>
+                             <div class="col-2 mr-5 mt-3 border border-primary bg-warning" style="color: white; ">
+                                 <a class="nav-link" href="./comedy.jsp"style="font-size: 40px; align-content: center; text-align: center">Comedy</a>
+                             </div>
+                             <div class="col-2 mr-5 mt-3 border border-primary bg-success" style="color: white; ">
+                                 <a class="nav-link" href="./drama.jsp" style="font-size: 50px; align-content: center; text-align: center">Drama</a>
+                             </div>
+                             <div class="col-2 mr-5 mt-3 border border-primary bg-info" style="color: white; ">
+                                 <a class="nav-link" href="./action.jsp" style="font-size: 50px; align-content: center; text-align: center">Action</a>
+                             </div>
+                         </div>
+                     
             
-       
-            
-            
-            
-            
-            
-            
-            <div class="fixed-bottom" style="background-color: orange; ">
+                         
+                         <div class="fixed-bottom" style="background-color: orange; ">
             <div class ="row">
                
                 <div class="col-sm-1 ">

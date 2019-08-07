@@ -4,7 +4,7 @@
     Author     : zaain
 --%>
 
-<%@page contentType="text/html" import="java.util.*" import="oms.model.*" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" import="java.util.*" import="uts.web.model.*" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,8 +24,7 @@
                  <input type="text" name="search" placeholder="Search.."> <a class="nav-link" href="./login.jsp">SIGN IN</a>
                  
              </div>
-            
-                 
+                             
              
          <div class="w-100">   
                  <div class="col bg-dark">
@@ -85,16 +84,10 @@
              <a class="nav-link" href="">The Omen</a> 
          </div>
         
-        
         <div class="row" style="text-align: center; background-color: linen">
                    <div class="col-sm border border-dark pt-5 pb-5 mt-5 mb-5 ml-2 mr-1">
                         <h3><a>Click Movie</a> to purchase.</h3>
                    </div>
-        </div> 
-    
-    
-   
-        
-        
+        </div>              
     </body>
 </html>

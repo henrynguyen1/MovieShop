@@ -23,7 +23,7 @@
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String phonenumber = request.getParameter("phone");
-        User user = (User) session.getAttribute("newuser");
+        User user = (User) session.getAttribute("user");
     %>
     
     <body>
@@ -36,27 +36,30 @@
              <div class="w-100">   
                  <div class="col bg-dark">
                  <nav class="navbar navbar-expand-lg navbar-dark" >
-                     <a class="navbar-brand" href="./index.html">Movie Store</a>
+                     <a class="navbar-brand" href="MovieCatalogueManagement.jsp">Movie Catalogue </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
                 <div class="collapse navbar-collapse" id="navbarMenu">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                         <a class="nav-link" href="./index.html">HOME</a>
+                         <a class="nav-link" href="./main.jsp">HOME</a>
                         </li>
                         <li class="nav-item">
                          <a class="nav-link" href="#">ABOUT</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">PRICES</a>
+                        <a class="nav-link" href="order.jsp">ORDER</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">CONTACT</a>
+                        <a class="nav-link" href="payment_history.jsp">PAYMENTS</a>
                         </li>
                         <li class="nav-item ">
-                        <a class="nav-link" href="./login.jsp">MY ACCOUNT</a>
+                        <a class="nav-link" href="accountmanagement.jsp">ACCOUNT MANAGEMENT</a>
                         </li>
+                        <li class="nav-item ">
+                        <a class="nav-link" href="add_shipment.jsp">SHIPMENTS</a>
+                        </li>                        
                     </ul>
                 </div>
                  </nav>
@@ -84,7 +87,7 @@
                     <td>
                         <input class="button" type="submit" value="Save"> 
                         &nbsp; 
-                        <button class="button" type="button" onclick="location.href = 'welcome.jsp'" > Cancel </button>
+                        <button class="button" type="button" onclick="location.href = 'main.jsp'" > Cancel </button>
                     </td>
                 </tr>
             </table>

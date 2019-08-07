@@ -64,6 +64,10 @@ public class Payment implements Serializable {
         this.status = PaymentStatus.valueOf(status);
     }
 
+    public Payment(int orderID, int userID, double amount, String type, LocalDate date, String status) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public double getAmount() {
         return amount;
     }

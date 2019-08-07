@@ -10,13 +10,18 @@ public class User implements Serializable {
     private String name;
     private String password;
     private String phonenumber;
-    
+
     public User(String ID, String email, String name, String password, String phonenumber) {
         this.email = email;
         this.name = name;
         this.password = password;
         this.phonenumber = phonenumber;
         this.ID = ID;
+    }
+    
+    public User(String email, String password){
+    this.email = email;
+    this.password = password;
     }
     
     public User() { }
@@ -75,5 +80,4 @@ public class User implements Serializable {
     public void setPhoneNumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
-    
 }

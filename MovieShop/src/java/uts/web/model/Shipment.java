@@ -2,9 +2,6 @@ package uts.web.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-
-
-
 /**
  *
  * @author henry117
@@ -12,59 +9,58 @@ import java.time.LocalDate;
 
 
 public class Shipment implements Serializable{
-    private int shipID; 
+    private String shipID; 
     private String email;   
     private String address;
     private String trackingNo;
-    private String name;
-    private int userID;
+    private String userID;
     private String type;
-    private LocalDate date;
     private String status;
     
     
     
     public Shipment() {
         type = "STANDARD";
-        date = LocalDate.now();
         status = "SUBMITTED";
     }
-    public Shipment(int shipID){
+    public Shipment(String shipID){
        this.shipID = shipID;
     
     }
-    public Shipment( String trackingNo, int userID, LocalDate date, String status){
+    public Shipment( String trackingNo, String userID, String status){
        
        this.trackingNo = trackingNo;
        this.userID = userID;
-       this.date = date;
        this.status = status;
 
     }
-
-
-    public Shipment(String email, String address, String name, String type ) {
+    public Shipment( String shipID, String address,  String type, String trackingNo, String userID, String status ){
         this.shipID = shipID;
         this.email = email;
         this.address = address;
-        this.name = name;
         this.type = type;
-       
+        this.trackingNo = trackingNo;
+        this.userID = userID;
+        this.status = status;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+//    public Shipment(String ShipID, String email, String address,  String type ) {
+//        this.shipID = shipID;
+//        this.email = email;
+//        this.address = address;
+//        
+//        this.type = type;
+//       
+//    }
 
-   public int getShipID() {
+    
+
+   public String getShipID() {
         return shipID;
     }
 
-    public void setShipID(int shipID) {
+    public void setShipID(String shipID) {
         this.shipID = shipID;
     }
 
@@ -101,14 +97,7 @@ public class Shipment implements Serializable{
         this.status = status;
     }
 
-    public LocalDate getDate() {
-        return date;
-    }
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public int getUserID() {
+    public String getUserID() {
         return userID;
     }
       

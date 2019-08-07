@@ -29,30 +29,34 @@
              <div class="w-100">   
                  <div class="col bg-dark">
                  <nav class="navbar navbar-expand-lg navbar-dark" >
-                     <a class="navbar-brand" href="./index.html">Movie Store</a>
+                     <a class="navbar-brand" href="MovieCatalogueManagement.jsp">Movie Catalogue </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                         </button>
                 <div class="collapse navbar-collapse" id="navbarMenu">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                         <a class="nav-link" href="./index.html">HOME</a>
+                         <a class="nav-link" href="./main.jsp">HOME</a>
                         </li>
                         <li class="nav-item">
                          <a class="nav-link" href="#">ABOUT</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">PRICES</a>
+                        <a class="nav-link" href="order.jsp">ORDER</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="#">CONTACT</a>
+                        <a class="nav-link" href="payment_history.jsp">PAYMENTS</a>
                         </li>
                         <li class="nav-item ">
-                        <a class="nav-link" href="./login.jsp">MY ACCOUNT</a>
+                        <a class="nav-link" href="accountmanagement.jsp">ACCOUNT MANAGEMENT</a>
                         </li>
+                        <li class="nav-item ">
+                        <a class="nav-link" href="add_shipment.jsp">SHIPMENTS</a>
+                        </li>                        
                     </ul>
                 </div>
                  </nav>
+                 
                  </div>
              </div>
         </div>
@@ -65,7 +69,7 @@
         String newphone = request.getParameter("newphone");
         int key = (new Random()).nextInt(999999);
         String ID = "" + key;
-        User user = (User) session.getAttribute("newuser");
+        User user = (User) session.getAttribute("user");
         %>
             
         <div class="container mt-lg-4 mt-sm-2 pb-4" style="width:100%; height:650px; background-color: bisque;">
@@ -94,7 +98,7 @@
                     }
             %>                     
            
-            <button class="button" type="submit" onclick="location.href = 'welcome.jsp'"> Home </button>
+            <button class="button" type="submit" onclick="location.href = 'main.jsp'"> Go to Main </button>
             
             <div class="fixed-bottom" style="background-color: orange; ">
             <div class ="row">
